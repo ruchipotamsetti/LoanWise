@@ -1,5 +1,7 @@
 export class PersonalLoan{
-    personalLoanId:number=0;
+    loanId!:string;
+	image!:string;
+	url!:string;
 	interestRate = 0.0;
 	bankName='';
 	maxLoanAmt=0;

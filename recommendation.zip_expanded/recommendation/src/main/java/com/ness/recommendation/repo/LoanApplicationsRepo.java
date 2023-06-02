@@ -21,4 +21,6 @@ public interface LoanApplicationsRepo extends JpaRepository<LoanApplications, In
 	@Query("update LoanApplications l set l.status='Approved' where l.applicationId=:applicationId")
 	public void updateLoanStatus(int applicationId);
 	
+	public LoanApplications findByLoanIdAndEmail(String loanId, String email);
+	
 }

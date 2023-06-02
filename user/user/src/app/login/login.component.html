@@ -26,6 +26,11 @@
                 </td>
 
             </tr>
+            <!-- <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button class="btn btn-danger" (click)="logout()">Logout</button>
+                </td>
+            </tr> -->
             <tr>
                 <td colspan="2" style="text-align: center;">
                     <a style="text-decoration: none;" routerLink="/forgot">Forgotten password?</a>
@@ -41,6 +46,11 @@
         </tbody>
     </table>
 </form>
+
+<div style="text-align: center;">
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+</div>
+
 
 <!-- <div align="center">
 <button (click)="getRequestFromJWT()">Get Request</button>

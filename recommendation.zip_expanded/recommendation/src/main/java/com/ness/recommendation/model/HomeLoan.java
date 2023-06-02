@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 public class HomeLoan {
 
 	@Id
-	int homeLoanId;
+	String loanId;
+	String image;
+	String url;
 	String bankName;
 	double interestRate;
 	int maxLoanAmt;

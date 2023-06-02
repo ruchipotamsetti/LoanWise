@@ -9,6 +9,12 @@ import { DocumentationService } from '../documentation.service';
   styleUrls: ['./documentation.component.css']
 })
 export class DocumentationComponent {
+
+
+  ngOnInit(){
+
+  }
+
   docForm=new FormGroup({
     email:new FormControl(),
     proofOfIdentity:new FormControl(),
@@ -17,16 +23,31 @@ export class DocumentationComponent {
     salarySlip:new FormControl(),
     driversLicense: new FormControl()
   })
+
+
   documentation=new Documentation();
-  email: string='swati@gmail.com';
+  email!: string;
+
   constructor(private _router:Router, private _docService: DocumentationService){}
+
   uploadDocs(){
     if(this.docForm.valid){
       console.log(this.documentation)
+      this.email = localStorage.getItem("email")+'';
       this._docService.uploadDocs(this.documentation, this.email ).subscribe(
         data=>{
-          console.log(data);
-          alert('Doc Form Submitted!')
+          if(data!=null){
+            console.log(data);
+            alert('Doc Form Submitted!')
+            // navigate to user dashboard, temporarily navigating to home
+            this._router.navigate(['/home'])
+          }
+          else{
+            alert("You have already uploaded documents");
+            // navigate to user dashboard, temporarily navigating to home
+            this._router.navigate(['/home'])
+          }
+          
           // this._router.navigate(["/"])
         },
         error=>{

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthRequest } from '../authRequest.model';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
 
   authRequest = new AuthRequest();
 
-  constructor(private _userSrv:UserService){}
+  constructor(private _userSrv:UserService, private _router:Router){}
 
   resetLogin(){
     this.authRequest.email='';
@@ -31,6 +32,7 @@ export class LoginComponent {
           localStorage.setItem('token', data);
           localStorage.setItem('email', this.authRequest.email);
           console.log(data)
+          this._router.navigate(['/recomform'])
           this.token=data;
   
         },
@@ -61,6 +63,11 @@ export class LoginComponent {
       }
     )
 
+  }
+
+  logout(){
+    console.log("Logging out!")
+    localStorage.clear();
   }
 
 }

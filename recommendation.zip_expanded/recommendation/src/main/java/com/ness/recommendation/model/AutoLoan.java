@@ -17,7 +17,9 @@ import lombok.NoArgsConstructor;
 public class AutoLoan {
 
 	@Id
-	int autoLoanId;
+	String loanId;
+	String image;
+	String url;
 	String autoType;
 	String bankName;
 	double interestRate;

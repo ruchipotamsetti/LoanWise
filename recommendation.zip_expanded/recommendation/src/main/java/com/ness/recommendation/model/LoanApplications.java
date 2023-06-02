@@ -20,7 +20,7 @@ public class LoanApplications {
 	int applicationId;
 	String email;
 	String loanType;
-    int loanId;
+    String loanId;
     int loanAmount;
     String bankName;
     String status;

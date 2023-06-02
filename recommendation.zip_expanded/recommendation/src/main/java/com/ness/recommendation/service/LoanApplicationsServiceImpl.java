@@ -17,6 +17,10 @@ public class LoanApplicationsServiceImpl implements LoanApplicationsService{
 	@Override
 	public LoanApplications saveApplication(LoanApplications loanApplication) {
 		// TODO Auto-generated method stub
+		LoanApplications found = loanApplicationsRepo.findByLoanIdAndEmail(loanApplication.getLoanId(), loanApplication.getEmail());
+		if(found != null) {
+			return null;
+		}
 		loanApplication.setStatus("Pending");
 		loanApplicationsRepo.save(loanApplication);
 		return loanApplication;

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthRequest } from './authRequest.model';
 import { User } from './user.model';
+import { LoanApplications } from './loanapplications.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class UserService {
 
   reset(user:User){
     return this._http.put<User>('http://localhost:5555/user/na/reset', user);
+  }
+
+  applyLoan(loanApplication: LoanApplications){
+    return this._http.post<LoanApplications>('http://localhost:9999/recommend/saveloanapplication', loanApplication);
   }
 
   

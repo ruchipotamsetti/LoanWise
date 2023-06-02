@@ -1,5 +1,7 @@
 export class AutoLoan{
-    autoLoanId='';
+	loanId!:string;
+	image!:string;
+	url!:string;
 	 autoType='';
       bankName='';
 	interestRate='';
