@@ -1,0 +1,47 @@
+<form (ngSubmit)="login()" [formGroup]="loginForm">
+    <table align="center">
+        <tbody>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="email" [(ngModel)]="authRequest.email" name="authRequest.email" formControlName="email"
+                        placeholder="Email address" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="password" [(ngModel)]="authRequest.password" name="authRequest.password"
+                        formControlName="password" placeholder="Password" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="text-align: center;">
+                    <!-- <input type="submit" value="Login"> -->
+                    <button type="submit" class="btn btn-primary">
+                        <a style="color: white;text-decoration: none;">Log in</a>
+                    </button>
+                </td>
+                <td style="text-align: center;">
+                    <button class="btn btn-info" (click)="getRequestFromJWT()">Get Request</button>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <a style="text-decoration: none;" routerLink="/forgot">Forgotten password?</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="button" class="btn btn-success">
+                        <a style="color: white;text-decoration: none;" routerLink="/register">Create new account</a>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<!-- <div align="center">
+<button (click)="getRequestFromJWT()">Get Request</button>
+</div> -->

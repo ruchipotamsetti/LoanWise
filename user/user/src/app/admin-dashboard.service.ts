@@ -1,0 +1,14 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Documentation} from './documentation.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AdminDashboardService {
+
+  constructor(private _http:HttpClient) { }
+  viewDocs(){
+    return this._http.get<Documentation[]>('http://localhost:9999/recommend/getalldocs');
+  }
+}

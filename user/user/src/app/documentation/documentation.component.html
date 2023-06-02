@@ -1,0 +1,55 @@
+<div class="container">
+    <form (ngSubmit)="uploadDocs()" [formGroup]="docForm">
+        <table class="table table-bordered" align="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Upload Proof of Identity</label>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control-file" id="proofOfIdentity" (change)="onUploadPOI($event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Upload Proof of Address</label>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control-file" id="proofOfAddress" (change)="onUploadPOA($event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Upload Bank Statement</label>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control-file" id="bankStatement" (change)="onUploadBS($event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Upload Salary Slip</label>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control-file" id="salarySlip" (change)="onUploadSS($event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Upload Driver's Licence</label>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control-file" id="driversLicense" (change)="onUploadDL($event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                      <button type="submit" class="btn btn-success">
+                        Apply
+                      </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    </div>

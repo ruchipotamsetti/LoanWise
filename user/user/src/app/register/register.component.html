@@ -1,0 +1,142 @@
+<!-- <p>register works!</p> -->
+
+<form (ngSubmit)="signup()" [formGroup]="regForm">
+    <table align="center">
+        <tbody>
+            <tr>
+                <td>
+                    <label>Email</label>
+                </td>
+                <td>
+                    <input type="email" [(ngModel)]="user.email" name="user.email" formControlName="email" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" [(ngModel)]="user.password" name="user.password" formControlName="password" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Select security question</label>
+                </td>
+                <td>
+                    <select [(ngModel)]="user.secQuestion" name="user.secQuestion" formControlName="secQuestion" required>
+                        <option>What was your first company?</option>
+                        <option>What was your childhood nickname?</option>
+                        <option>In what city or town was your first job?</option>
+                        <option>What is your oldest sibling's middle name?</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Security Answer</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.secAnswer" name="user.secAnswer" formControlName="secAnswer" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>First Name</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.firstName" name="user.firstName" formControlName="firstName" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Last Name</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.lastName" name="user.lastName" formControlName="lastName" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Pancard No.</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.panCard" name="user.panCard" formControlName="panCard" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Mobile</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.mobile" name="user.mobile" formControlName="mobile" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Address</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.address" name="user.address" formControlName="address" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>City</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.city" name="user.city" formControlName="city" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>State</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.state" name="user.state" formControlName="state" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Country</label>
+                </td>
+                <td>
+                    <select [(ngModel)]="user.country" name="user.country" formControlName="country" required>
+                        <option>India</option>
+                        <option>USA</option>
+                        <option>Japan</option>
+                        <option>UK</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Pincode</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.pincode" name="user.pincode" formControlName="pincode" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Select Occupation type</label>
+                </td>
+                <td>
+                    <select [(ngModel)]="user.occupationType" name="user.occupationType" formControlName="occupationType" required>
+                        <option>Salaried</option>
+                        <option>Self employed</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="btn btn-success">
+                        Sign Up
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table> 
+</form>

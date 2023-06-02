@@ -1,0 +1,25 @@
+<div class="otp">
+    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+    <button class="btn btn-success mt-4" (click)="handleClick()">Verify OTP</button>
+  </div>
+  
+  
+  
+  
+  <div *ngIf="wrongotp">
+  
+  
+    <div class="contain">
+      <div class="row d-flex align-items-center justify-content-center">
+        <form class="col-md-6">
+          <div class="card px-5 py-5">
+            <button class="btn btn-success mt-4 signup" (click)="getOTP()">resend</button>
+            <div id="sign-in-button"></div>
+          </div>
+        </form>
+      </div>
+  
+  
+    <!-- <button (click)="getOTP()">resend</button> -->
+  </div>
+  
