@@ -32,4 +32,5 @@ public class AutoLoan {
 	int minSalaryForSelfEmployed;
 	int minCreditScore;
 	int contact;
+	
 }

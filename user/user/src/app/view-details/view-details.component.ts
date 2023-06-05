@@ -13,9 +13,14 @@ export class ViewDetailsComponent {
 id: any;
 constructor(private _recomSrv:RecommendationService, private _userSrv : UserService ,private _router:Router){}
 selectedLoan:any;
+pageReload=false;
 ngOnInit(){
 
-  this._router.navigate(['/viewdetails'])
+  //window.location.href= '/viewdetails'
+  // window.location.reload();
+  //window.location.replace(window.location.href)
+  // this.reload();
+  // this._router.navigate(['/viewdetails'])
   // window.location.href='/viewdetails';
   let loan = localStorage.getItem('selectedLoan')
   if(loan!=null){
@@ -23,6 +28,13 @@ ngOnInit(){
   }
   
   console.log(this.selectedLoan)
+}
+
+reload(){
+  if(!this.pageReload){
+    this.pageReload=true;
+    window.location.reload();
+  }
 }
 
 

@@ -72,22 +72,37 @@ ngOnInit(){
     return new Blob([uintArray], { type: 'application/pdf' });
   }
 
-stat:string="approve";
-reject:string="reject"
 
-  aprrove(documentation:Documentation){
+  approve(loanApplication:LoanApplications){
     //documentation.status=this.stat;
-    this._adminService.approve(documentation).subscribe(
+    this._adminService.approve(loanApplication).subscribe(
       data=>{
         console.log(data);
        // console.log(this.selectTeam);
         alert(data);
+        this.getAllApplications();
       },
       error=>{
         console.log(error);
       }
     )
   }
+
+  reject(loanApplication:LoanApplications){
+    //documentation.status=this.stat;
+    this._adminService.reject(loanApplication).subscribe(
+      data=>{
+        console.log(data);
+       // console.log(this.selectTeam);
+        alert(data);
+        this.getAllApplications();
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
   email:string='';
   applications: LoanApplications[] = [];
   getAllApplications(){

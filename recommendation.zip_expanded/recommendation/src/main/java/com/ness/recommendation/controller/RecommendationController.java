@@ -108,13 +108,13 @@ public class RecommendationController {
 		return new ResponseEntity<LoanApplications>(loanApplicationsService.saveApplication(loanApplication), HttpStatus.OK);
 	}
 	
-	@GetMapping("getapplications")
-	public ResponseEntity<List<LoanApplications>> getAllApplications(@RequestParam (required=false) String email){
-		if(email!=null) {
-			return new ResponseEntity<List<LoanApplications>>(loanApplicationsService.findByEmail(email), HttpStatus.OK);
+		@GetMapping("getapplications")
+		public ResponseEntity<List<LoanApplications>> getAllApplications(@RequestParam (required=false) String email){
+			if(email!=null) {
+				return new ResponseEntity<List<LoanApplications>>(loanApplicationsService.findByEmail(email), HttpStatus.OK);
+			}
+			return new ResponseEntity<List<LoanApplications>>(loanApplicationsService.getAllApplications(), HttpStatus.OK);
 		}
-		return new ResponseEntity<List<LoanApplications>>(loanApplicationsService.getAllApplications(), HttpStatus.OK);
-	}
 	
 	@PutMapping("updateapplication")
 	public ResponseEntity<String> updateLoanStatus(@RequestBody LoanApplications loanApplication){
