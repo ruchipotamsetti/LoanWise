@@ -25,14 +25,14 @@ public class AutoLoanServiceImpl implements AutoLoanService{
 	@Override
 	public List<AutoLoan> getByRequestByForm(RecommendationForm recommendationForm, String autoType) {
 		// TODO Auto-generated method stub
-		int creditScore=600;
+		//int creditScore=600;
 		String occupationType = recommendationForm.getOccupationType();
 		if(occupationType.equals("Salaried")){
-			List<AutoLoan> recommended = autoLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore, autoType);
+			List<AutoLoan> recommended = autoLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore(), autoType);
 			return recommended;
 		}
 		else {
-			List<AutoLoan> recommended = autoLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore, autoType);
+			List<AutoLoan> recommended = autoLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore(), autoType);
 			return recommended;
 		}
 	}

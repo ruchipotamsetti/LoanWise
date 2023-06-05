@@ -25,14 +25,14 @@ public class HomeLoanServiceImpl implements HomeLoanService{
 	@Override
 	public List<HomeLoan> getByRequestByForm(RecommendationForm recommendationForm) {
 		// TODO Auto-generated method stub
-		int creditScore=600;
+		//int creditScore=600;
 		String occupationType = recommendationForm.getOccupationType();
 		if(occupationType.equals("Salaried")){
-			List<HomeLoan> recommended = homeLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore);
+			List<HomeLoan> recommended = homeLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
 			return recommended;
 		}
 		else {
-			List<HomeLoan> recommended = homeLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore);
+			List<HomeLoan> recommended = homeLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
 			return recommended;
 		}
 	}

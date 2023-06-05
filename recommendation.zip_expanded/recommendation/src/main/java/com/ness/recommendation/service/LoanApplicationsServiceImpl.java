@@ -43,11 +43,20 @@ public class LoanApplicationsServiceImpl implements LoanApplicationsService{
 	}
 
 	@Override
-	public String updateLoanStatus(int applicationId) {
+	public String updateAsApproved(int applicationId) {
 		// TODO Auto-generated method stub
 		
-		loanApplicationsRepo.updateLoanStatus(applicationId);
+		loanApplicationsRepo.updateAsApproved(applicationId);
 		return "Loan Application "+applicationId+" approved!";
+		
+	}
+
+	@Override
+	public String updateAsRejected(int applicationId) {
+		// TODO Auto-generated method stub
+		
+		loanApplicationsRepo.updateAsRejected(applicationId);
+		return "Loan Application "+applicationId+" rejected!";
 		
 	}
 

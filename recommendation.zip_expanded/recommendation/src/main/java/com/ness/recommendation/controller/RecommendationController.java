@@ -47,10 +47,10 @@ public class RecommendationController {
 	
 	//------------Personal Loan------------------------
 	
-	@GetMapping("personalbyrequest/{interestrate}/{loanamt}/{occupationType}/{tenure}/{salary}")
-	public ResponseEntity<List<PersonalLoan>> getPersonalLoans(@PathVariable double interestrate,@PathVariable int loanamt,@PathVariable String occupationType,@PathVariable int tenure,@PathVariable int salary){
-		return new ResponseEntity<List<PersonalLoan>>(personalLoanService.getByRequest(interestrate,loanamt,occupationType,tenure,salary), HttpStatus.OK);
-	}
+//	@GetMapping("personalbyrequest/{interestrate}/{loanamt}/{occupationType}/{tenure}/{salary}")
+//	public ResponseEntity<List<PersonalLoan>> getPersonalLoans(@PathVariable double interestrate,@PathVariable int loanamt,@PathVariable String occupationType,@PathVariable int tenure,@PathVariable int salary){
+//		return new ResponseEntity<List<PersonalLoan>>(personalLoanService.getByRequest(interestrate,loanamt,occupationType,tenure,salary), HttpStatus.OK);
+//	}
 	
 	@PostMapping("personalloanbyrequest")
 	public ResponseEntity<List<PersonalLoan>> getPersonalLoans(@RequestBody RecommendationForm recommendationForm){
@@ -116,10 +116,17 @@ public class RecommendationController {
 			return new ResponseEntity<List<LoanApplications>>(loanApplicationsService.getAllApplications(), HttpStatus.OK);
 		}
 	
-	@PutMapping("updateapplication")
-	public ResponseEntity<String> updateLoanStatus(@RequestBody LoanApplications loanApplication){
+	@PutMapping("approve")
+	public ResponseEntity<String> updateAsApproved(@RequestBody LoanApplications loanApplication){
 		
-		String update = loanApplicationsService.updateLoanStatus(loanApplication.getApplicationId());
+		String update = loanApplicationsService.updateAsApproved(loanApplication.getApplicationId());
+		return new ResponseEntity<String>(update, HttpStatus.OK);
+	}
+	
+	@PutMapping("reject")
+	public ResponseEntity<String> updateAsRejected(@RequestBody LoanApplications loanApplication){
+		
+		String update = loanApplicationsService.updateAsRejected(loanApplication.getApplicationId());
 		return new ResponseEntity<String>(update, HttpStatus.OK);
 	}
 	
