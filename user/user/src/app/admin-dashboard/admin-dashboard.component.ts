@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Documentation } from '../documentation.model';
 import { AdminDashboardService } from '../admin-dashboard.service';
 import { Router } from '@angular/router';
+import { LoanApplications } from '../loanapplications.model';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -9,6 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AdminDashboardComponent {
   constructor(private _router:Router, private _adminService: AdminDashboardService){}
+
+ngOnInit(){
+  //this.viewDocs();
+  this.getAllApplications();
+}
+
   documentations:Documentation[]=[];
   pdfSrc='';
   poiSrc='';
@@ -18,18 +25,27 @@ export class AdminDashboardComponent {
   dlSrc='';
   url='';
   showTable:boolean=false;
-  viewDocs(){
+  userdoc = new Documentation();
+  viewDocs(email:string){
     this._adminService.viewDocs().subscribe(
       data=>{
         alert('All docs retrieved')
         this.showTable=true;
         console.log(data);
         this.documentations=data;
-        this.poiSrc = this.documentations[0].proofOfIdentity;
-        this.poaSrc = this.documentations[0].proofOfAddress;
-        this.bsSrc = this.documentations[0].bankStatement;
-        this.ssSrc = this.documentations[0].salarySlip;
-        this.dlSrc = this.documentations[0].driversLicense;
+
+        for(let documentation of this.documentations){
+          if(documentation.email == email){
+            this.userdoc = documentation;
+          }
+
+        }
+
+        this.poiSrc = this.userdoc.proofOfIdentity;
+        this.poaSrc = this.userdoc.proofOfAddress;
+        this.bsSrc = this.userdoc.bankStatement;
+        this.ssSrc = this.userdoc.salarySlip;
+        this.dlSrc = this.userdoc.driversLicense;
       },
       error=>{
         console.log(error)
@@ -69,6 +85,23 @@ reject:string="reject"
       },
       error=>{
         console.log(error);
+      }
+    )
+  }
+  email:string='';
+  applications: LoanApplications[] = [];
+  getAllApplications(){
+    this.email = localStorage.getItem("email")+'';
+    console.log(this.email)
+    this._adminService.getApplications().subscribe(
+      data=>{
+        this.applications = JSON.parse(JSON.stringify(data))
+
+        console.log(data)
+        console.log("this is ="+this.applications);
+      },
+      error=>{
+        console.log(error)
       }
     )
   }

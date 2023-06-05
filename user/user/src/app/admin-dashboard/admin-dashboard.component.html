@@ -1,48 +1,81 @@
-<button (click)="viewDocs()">Get Docs</button>
+
+  <div class="table-responsive">
+    <table class="table" border="2" style="border-collapse: collapse; width: 100%;">
+        <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Bank Name</th>
+          <th>Email</th>
+          <th>Loan Amount</th>
+          <th>Loan ID</th>
+          <th>Loan Type</th>
+          <th>Status</th>
+          <th>Documents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of applications">
+          <td>{{ app.applicationId }}</td>
+          <td>{{ app.bankName }}</td>
+          <td>{{ app.email }}</td>
+          <td>{{ app.loanAmount }}</td>
+          <td>{{ app.loanId }}</td>
+          <td>{{ app.loanType }}</td>
+          <td>{{ app.status }}</td>
+          <td><button (click)="viewDocs(app.email)">View Docs</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
  <table border="2" style="border-collapse: collapse; width: 100%;" *ngIf="showTable">
-    <thead>
-      <tr>
-        <th style="border: 1px solid #000; padding: 8px;">User Email</th>
-        <th style="border: 1px solid #000; padding: 8px;">Proof of Identity</th>
-        <th style="border: 1px solid #000; padding: 8px;">Proof of Address</th>
-        <th style="border: 1px solid #000; padding: 8px;">Bank Statement</th>
-        <th style="border: 1px solid #000; padding: 8px;">Salary Slip</th>
-        <th style="border: 1px solid #000; padding: 8px;">Driver's License</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let doc of documentations">
-        <td style="border: 1px solid #000; padding: 8px;">{{ doc.email }}</td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button (click)="downloadFile(poiSrc, doc.email.split('@')[0] + 'poi.pdf')">
-            Download PDF
-          </button>
-        </td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button (click)="downloadFile(poaSrc, doc.email.split('@')[0] + 'poa.pdf')">
-            Download PDF
-          </button>
-        </td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button (click)="downloadFile(bsSrc, doc.email.split('@')[0] + 'bs.pdf')">
-            Download PDF
-          </button>
-        </td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button (click)="downloadFile(ssSrc, doc.email.split('@')[0] + 'ss.pdf')">
-            Download PDF
-          </button>
-        </td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button (click)="downloadFile(dlSrc, doc.email.split('@')[0] + 'dl.pdf')">
-            Download PDF
-          </button>
-        </td>
-        <td style="border: 1px solid #000; padding: 8px;">
-          <button class="btn btn-success" >
-            Approve
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; padding: 8px;">User Email</th>
+      <th style="border: 1px solid #000; padding: 8px;">Proof of Identity</th>
+      <th style="border: 1px solid #000; padding: 8px;">Proof of Address</th>
+      <th style="border: 1px solid #000; padding: 8px;">Bank Statement</th>
+      <th style="border: 1px solid #000; padding: 8px;">Salary Slip</th>
+      <th style="border: 1px solid #000; padding: 8px;">Driver's License</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000; padding: 8px;">{{ userdoc.email }}</td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button (click)="downloadFile(poiSrc, userdoc.email.split('@')[0] + 'poi.pdf')">
+          Download PDF
+        </button>
+      </td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button (click)="downloadFile(poaSrc, userdoc.email.split('@')[0] + 'poa.pdf')">
+          Download PDF
+        </button>
+      </td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button (click)="downloadFile(bsSrc, userdoc.email.split('@')[0] + 'bs.pdf')">
+          Download PDF
+        </button>
+      </td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button (click)="downloadFile(ssSrc, userdoc.email.split('@')[0] + 'ss.pdf')">
+          Download PDF
+        </button>
+      </td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button (click)="downloadFile(dlSrc, userdoc.email.split('@')[0] + 'dl.pdf')">
+          Download PDF
+        </button>
+      </td>
+      <td style="border: 1px solid #000; padding: 8px;">
+        <button class="btn btn-success" >
+          Approve
+        </button>
+        <button class="btn btn-danger" >
+          Reject
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  

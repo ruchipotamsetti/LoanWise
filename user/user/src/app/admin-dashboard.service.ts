@@ -15,4 +15,8 @@ export class AdminDashboardService {
   approve(documentation:Documentation){
     return this._http.put<String>("http://localhost:9999/recommend/status",documentation);
   }
+
+  getApplications(){
+    return this._http.get(`http://localhost:9999/recommend/getapplications`);
+  }
 }
