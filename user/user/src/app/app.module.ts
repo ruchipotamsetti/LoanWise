@@ -24,6 +24,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 
@@ -44,6 +45,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
     DocumentationComponent,
     AdminDashboardComponent,
     HomeDashboardComponent,
+    AdminLoginComponent,
     
   ],
   imports: [

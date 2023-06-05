@@ -15,6 +15,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 const routes: Routes = [
@@ -33,10 +34,7 @@ const routes: Routes = [
   {path:"documentationForm", component: DocumentationComponent},
   {path:"viewDocs", component: AdminDashboardComponent},
   {path:"homeDashboard", component: HomeDashboardComponent},
-
-
-
-
+  {path:"adminLogin", component: AdminLoginComponent}
 ];
 
 @NgModule({

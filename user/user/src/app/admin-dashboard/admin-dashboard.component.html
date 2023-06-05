@@ -23,6 +23,8 @@
           <td>{{ app.loanType }}</td>
           <td>{{ app.status }}</td>
           <td><button (click)="viewDocs(app.email)">View Docs</button></td>
+          
+         
         </tr>
       </tbody>
     </table>
@@ -74,7 +76,14 @@
         <button class="btn btn-danger" >
           Reject
         </button>
-      </td>
+        <td style="border: 1px solid #000; padding: 8px;">
+            <button class="btn btn-success" >
+              Approve
+            </button>
+            <button class="btn btn-danger" >
+              Reject
+            </button>
+          </td>
     </tr>
   </tbody>
 </table>
