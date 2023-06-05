@@ -23,9 +23,9 @@ public class PersonalServiceImpl implements PersonalLoanService{
 
 	@Override
 	public List<PersonalLoan> getByRequest(double interestrate, int loanamt, String occupationType, int tenure,
-			int salary) {
+			int salary, int creditScore) {
 		// TODO Auto-generated method stub
-		int creditScore=600;
+		//int creditScore=600;
 		if(occupationType.equalsIgnoreCase("Salaried")){
 			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSalaried(interestrate, loanamt, tenure, salary, creditScore);
 			return recommended;
@@ -51,14 +51,14 @@ public class PersonalServiceImpl implements PersonalLoanService{
 	@Override
 	public List<PersonalLoan> getByRequestByForm(RecommendationForm recommendationForm) {
 		// TODO Auto-generated method stub
-		int creditScore=600;
+		//int creditScore=600;
 		String occupationType = recommendationForm.getOccupationType();
 		if(occupationType.equals("Salaried")){
-			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore);
+			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
 			return recommended;
 		}
 		else {
-			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), creditScore);
+			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
 			return recommended;
 		}
 		
