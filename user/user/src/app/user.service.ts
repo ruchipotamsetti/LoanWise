@@ -37,6 +37,9 @@ export class UserService {
     return this._http.post<LoanApplications>('http://localhost:9999/recommend/saveloanapplication', loanApplication);
   }
 
+  getCreditScore(email:String){
+    return this._http.get<number>(`http://localhost:5555/user/na/getcreditscore/${email}`);
+  }
   
 
 }
