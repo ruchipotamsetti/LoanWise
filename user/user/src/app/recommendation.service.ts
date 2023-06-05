@@ -26,4 +26,5 @@ getDetails(id:any){
   return this._http.get<PersonalLoan>(`http://localhost:9999/recommend/getpersonalbyid/${id}`);
 }
 
+
 }

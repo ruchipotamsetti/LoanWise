@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { PersonalLoan } from '../personalLoan.model';
 import { RecommendationService } from '../recommendation.service';
@@ -12,10 +12,10 @@ import { RecommendForm } from '../RecommendForm.model';
 })
 export class RecomFormComponent {
   recomForm =new FormGroup({
-    interestRate:new FormControl(),
-    loanAmt:new FormControl(),
-    tenure:new FormControl(),
-    salary:new FormControl(),
+    interestRate:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+    loanAmt:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+    tenure:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+    salary:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
     occupationType:new FormControl(),
     panCard:new FormControl(),
     loanType:new FormControl(),
@@ -58,10 +58,18 @@ export class RecomFormComponent {
         this._recomSrv.getPersonalLoan(this.rForm).subscribe(
           data=>{
             
-            alert('Recommendations Personal Loan')
+            console.log("This is data"+data);
             localStorage.setItem('personal', JSON.stringify(data));
-            console.log(data)
-            this._router.navigate(['/rlist'])
+            //const hello=new PersonalLoan();
+            const hello=localStorage.getItem("personal");
+            console.log("From database/Localstorage"+hello)
+            if(hello!=null){
+              this._router.navigate(['/rlist'])
+              alert("here are the recommendations")
+            }else{
+              alert("no recommendation found")
+            }
+           
           },
           error=>{
             console.log(error)
@@ -72,6 +80,7 @@ export class RecomFormComponent {
       else if(this.rForm.loanType=="Home Loan"){
         this._recomSrv.getHomeLoan(this.rForm).subscribe(
           data=>{
+           
             alert('Recommendations Home Loan')
             localStorage.setItem('home', JSON.stringify(data));
             console.log(data)
@@ -101,8 +110,7 @@ export class RecomFormComponent {
     else{
       alert('Enter all information')
     }
-
-  }
+    
 }
 
-
+}

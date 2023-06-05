@@ -35,7 +35,14 @@ export class RlistComponent {
     
     
     viewMore(loan : any){
+
+
+
+      console.log('below is loan obj')
       console.log(loan);
+      console.log('above is loan obj')
+      
+
       localStorage.setItem('selectedLoan',JSON.stringify(loan));
       this._router.navigate(['/viewdetails'])
       

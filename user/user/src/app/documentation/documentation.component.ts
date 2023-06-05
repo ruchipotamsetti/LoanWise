@@ -34,7 +34,7 @@ export class DocumentationComponent {
     if(this.docForm.valid){
       console.log(this.documentation)
       this.email = localStorage.getItem("email")+'';
-      this._docService.uploadDocs(this.documentation, this.email ).subscribe(
+      this._docService.uploadDocs(this.documentation, this.email).subscribe(
         data=>{
           if(data!=null){
             console.log(data);

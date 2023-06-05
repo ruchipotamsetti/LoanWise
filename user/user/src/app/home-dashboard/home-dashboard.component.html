@@ -1,0 +1,34 @@
+
+
+{{email}}
+
+<div class="table-responsive">
+
+
+    <table class="table" border="2" style="border-collapse: collapse; width: 100%;">
+
+        <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Bank Name</th>
+          <th>Email</th>
+          <th>Loan Amount</th>
+          <th>Loan ID</th>
+          <th>Loan Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of applications">
+          <td>{{ app.applicationId }}</td>
+          <td>{{ app.bankName }}</td>
+          <td>{{ app.email }}</td>
+          <td>{{ app.loanAmount }}</td>
+          <td>{{ app.loanId }}</td>
+          <td>{{ app.loanType }}</td>
+          <td>{{ app.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

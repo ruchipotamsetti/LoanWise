@@ -14,6 +14,8 @@ import { RlistComponent } from './rlist/rlist.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full' },
@@ -29,7 +31,9 @@ const routes: Routes = [
   {path:"rlist",component:RlistComponent},
   {path:"viewdetails",component:ViewDetailsComponent},
   {path:"documentationForm", component: DocumentationComponent},
-  {path:"viewDocs", component: AdminDashboardComponent}
+  {path:"viewDocs", component: AdminDashboardComponent},
+  {path:"homeDashboard", component: HomeDashboardComponent},
+
 
 
 

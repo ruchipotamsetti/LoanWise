@@ -55,4 +55,21 @@ export class AdminDashboardComponent {
     }
     return new Blob([uintArray], { type: 'application/pdf' });
   }
+
+stat:string="approve";
+reject:string="reject"
+
+  aprrove(documentation:Documentation){
+    //documentation.status=this.stat;
+    this._adminService.approve(documentation).subscribe(
+      data=>{
+        console.log(data);
+       // console.log(this.selectTeam);
+        alert(data);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
 }

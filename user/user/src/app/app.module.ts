@@ -23,6 +23,7 @@ import { RlistComponent } from './rlist/rlist.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 
 
 
@@ -42,6 +43,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     ViewDetailsComponent,
     DocumentationComponent,
     AdminDashboardComponent,
+    HomeDashboardComponent,
     
   ],
   imports: [

@@ -1,5 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="uploadDocs()" [formGroup]="docForm">
+    <form [formGroup]="docForm" (ngSubmit)="uploadDocs()" >
         <table class="table table-bordered" align="center">
             <tbody>
                 <tr>
@@ -7,7 +7,7 @@
                         <label>Upload Proof of Identity</label>
                     </td>
                     <td>
-                        <input type="file" class="form-control-file" id="proofOfIdentity" (change)="onUploadPOI($event)">
+                        <input type="file" class="form-control-file" id="proofOfIdentity" formControlName="proofOfIdentity" (change)="onUploadPOI($event)" required>
                     </td>
                 </tr>
                 <tr>
@@ -15,7 +15,7 @@
                         <label>Upload Proof of Address</label>
                     </td>
                     <td>
-                        <input type="file" class="form-control-file" id="proofOfAddress" (change)="onUploadPOA($event)">
+                        <input type="file" class="form-control-file" id="proofOfAddress" formControlName="proofOfAddress" (change)="onUploadPOA($event)" required>
                     </td>
                 </tr>
                 <tr>
@@ -23,7 +23,7 @@
                         <label>Upload Bank Statement</label>
                     </td>
                     <td>
-                        <input type="file" class="form-control-file" id="bankStatement" (change)="onUploadBS($event)">
+                        <input type="file" class="form-control-file" id="bankStatement"  formControlName="bankStatement" (change)="onUploadBS($event)" required>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label>Upload Salary Slip</label>
                     </td>
                     <td>
-                        <input type="file" class="form-control-file" id="salarySlip" (change)="onUploadSS($event)">
+                        <input type="file" class="form-control-file" id="salarySlip" formControlName="salarySlip" (change)="onUploadSS($event)" required>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label>Upload Driver's Licence</label>
                     </td>
                     <td>
-                        <input type="file" class="form-control-file" id="driversLicense" (change)="onUploadDL($event)">
+                        <input type="file" class="form-control-file" id="driversLicense" formControlName="driversLicense" (change)="onUploadDL($event)" required>
                     </td>
                 </tr>
                 <tr>

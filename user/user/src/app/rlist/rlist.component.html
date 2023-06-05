@@ -21,28 +21,28 @@
                 <div class="col-md-8 col-xs-12" >
                     <div class="row">
                         <div>
-                            <div class="col-sm-4 col-xs-12" *ngFor="let loan of selectedLoanArray">
+                            <div class="col-sm-5 col-xs-12" *ngFor="let loan of selectedLoanArray">
 
                                 <div class="featured-item">
                                 <div class="thumb">
 
                                     <div class="thumb-img">
-                                        <img src="../assets/img/product-1-720x480.jpg" alt="">
+                                        <img src="{{loan.image}}" alt="">
                                     </div>
 
-                                    <div class="overlay-content">
+                                    <!-- <div class="overlay-content">
                                      <strong title="Posted on"><i class="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                      <strong title="Type"><i class="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                      <strong title="Location"><i class="fa fa-map-marker"></i> London</strong>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="down-content" >
-                                    <h4>{{loan.interestRate}}</h4>
+                                    <h4>{{loan.bankName}}</h4>
 
-                                    <p> {{loan.bankName}}</p>
+                                    <p> <b>Interest Rate:</b>{{loan.interestRate}}</p>
 
-                                    <p><span><strong><sup>$</sup>{{loan.maxLoanAmt}}</strong></span></p>
+                                    <p><span>Max Loan Amount<strong><sup>$</sup>{{loan.maxLoanAmt}}</strong></span></p>
 
                                     <div class="text-button">
                                         <button (click)="viewMore(loan)">View More</button>

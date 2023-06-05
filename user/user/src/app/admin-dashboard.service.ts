@@ -11,4 +11,8 @@ export class AdminDashboardService {
   viewDocs(){
     return this._http.get<Documentation[]>('http://localhost:9999/recommend/getalldocs');
   }
+
+  approve(documentation:Documentation){
+    return this._http.put<String>("http://localhost:9999/recommend/status",documentation);
+  }
 }
