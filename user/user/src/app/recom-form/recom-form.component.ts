@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router';
 import { PersonalLoan } from '../personalLoan.model';
 import { RecommendationService } from '../recommendation.service';
 import { RecommendForm } from '../RecommendForm.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-recom-form',
@@ -17,9 +18,9 @@ export class RecomFormComponent {
     tenure:new FormControl(),
     salary:new FormControl(),
     occupationType:new FormControl(),
-    panCard:new FormControl(),
+    //panCard:new FormControl(),
     loanType:new FormControl(),
-    creditScore:new FormControl(),
+    //creditScore:new FormControl(),
     autoTypeOption: new FormControl()
   });
  
@@ -31,7 +32,7 @@ export class RecomFormComponent {
 
   }
 
-  constructor(private _recomSrv:RecommendationService, private _router:Router){
+  constructor(private _recomSrv:RecommendationService, private _userSrv:UserService ,private _router:Router){
 
   }
 
@@ -50,6 +51,11 @@ export class RecomFormComponent {
 
   
   submitRecomForm(){
+    this.getCreditScore();
+    let credit =localStorage.getItem('creditScore')+'';
+    let credit1=parseInt(credit);
+    console.log('Inside submitRecomForm: '+credit1)
+    this.rForm.creditScore = credit1;
     if(this.recomForm.valid){
       localStorage.setItem("loanType",this.rForm.loanType);
 
@@ -102,6 +108,22 @@ export class RecomFormComponent {
       alert('Enter all information')
     }
 
+  }
+
+  email!:string;
+  getCreditScore(){
+
+    this.email = localStorage.getItem('email')+'';
+    this._userSrv.getCreditScore(this.email).subscribe(
+      data=>{
+        console.log(data)
+        localStorage.setItem('creditScore',data.toString());
+      },
+      error=>{
+
+        console.log(error)
+      }
+    )
   }
 }
 
