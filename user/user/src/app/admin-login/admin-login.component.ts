@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminLoginService } from '../admin-login.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,23 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-login.component.css']
 })
 export class AdminLoginComponent {
+  
+
   formData = {
     username: '',
     password: ''
   };
 
-  constructor(private _router:Router){}
+  constructor(private adminLoginService: AdminLoginService) { }
 
-  
-  onSubmit(){
-    if (this.formData.username == 'admin' && this.formData.password == 'password') {
-      // Authentication successful, perform admin actions or navigate to admin dashboard
-      console.log('Login successful');
-      this._router.navigate(['/viewDocs'])
+  onSubmit() {
+    if (this.formData.username === 'admin' && this.formData.password === 'password') {
+      // Authentication successful
+      this.adminLoginService.login();
+      console.log('Authentication successful');
     } else {
-      // console.log("username: "+this.formData.username);
-      // console.log("password: "+this.formData.password);
-      console.log('Login failed');
+      // Authentication failed
+      console.log('Authentication failed');
     }
   }
+
 }

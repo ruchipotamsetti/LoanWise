@@ -3,13 +3,15 @@ import { Documentation } from '../documentation.model';
 import { AdminDashboardService } from '../admin-dashboard.service';
 import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
+import { AdminLoginService } from '../admin-login.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  constructor(private _router:Router, private _adminService: AdminDashboardService){}
+  constructor(private _router:Router, private _adminService: AdminDashboardService,
+    private adminLoginService: AdminLoginService){}
 
 ngOnInit(){
   //this.viewDocs();
@@ -119,5 +121,8 @@ ngOnInit(){
         console.log(error)
       }
     )
+  }
+  logout() {
+    this.adminLoginService.logout();
   }
 }
