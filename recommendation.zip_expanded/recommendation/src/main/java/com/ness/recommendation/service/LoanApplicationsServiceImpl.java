@@ -1,5 +1,7 @@
 package com.ness.recommendation.service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ public class LoanApplicationsServiceImpl implements LoanApplicationsService{
 		if(found != null) {
 			return null;
 		}
+		loanApplication.setAppliedOn(LocalDate.now());
 		loanApplication.setStatus("Pending");
 		loanApplicationsRepo.save(loanApplication);
 		return loanApplication;

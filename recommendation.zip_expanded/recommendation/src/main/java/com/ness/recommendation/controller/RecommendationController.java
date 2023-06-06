@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ness.recommendation.model.AutoLoan;
 import com.ness.recommendation.model.Documentation;
+import com.ness.recommendation.model.Emi;
 import com.ness.recommendation.model.HomeLoan;
 import com.ness.recommendation.model.LoanApplications;
 import com.ness.recommendation.model.PersonalLoan;
 import com.ness.recommendation.model.RecommendationForm;
 import com.ness.recommendation.service.AutoLoanService;
 import com.ness.recommendation.service.DocumentationService;
+import com.ness.recommendation.service.EmiService;
 import com.ness.recommendation.service.HomeLoanService;
 import com.ness.recommendation.service.LoanApplicationsService;
 import com.ness.recommendation.service.PersonalLoanService;
@@ -44,6 +46,8 @@ public class RecommendationController {
 	DocumentationService documentationService;
 	@Autowired
 	LoanApplicationsService loanApplicationsService;
+	@Autowired
+	EmiService emiService;
 	
 	//------------Personal Loan------------------------
 	
@@ -105,6 +109,7 @@ public class RecommendationController {
 	
 	@PostMapping("saveloanapplication")
 	public ResponseEntity<LoanApplications> saveLoanApplication(@RequestBody LoanApplications loanApplication){
+		System.out.println(loanApplication.getInterestRate());
 		return new ResponseEntity<LoanApplications>(loanApplicationsService.saveApplication(loanApplication), HttpStatus.OK);
 	}
 	
@@ -128,6 +133,13 @@ public class RecommendationController {
 		
 		String update = loanApplicationsService.updateAsRejected(loanApplication.getApplicationId());
 		return new ResponseEntity<String>(update, HttpStatus.OK);
+	}
+	
+	//------------EMIs------------------------
+	
+	@PostMapping("generateemi")
+	public String generateEmis(@RequestBody LoanApplications loanApplication) {
+		return emiService.generateEmis(loanApplication);
 	}
 	
 	

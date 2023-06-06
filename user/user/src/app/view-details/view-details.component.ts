@@ -70,6 +70,11 @@ getDetailById(){
       this.loanApplication.loanId=selectedLoan.loanId;
       this.loanApplication.loanType=localStorage.getItem("loanType")+'';
       this.loanApplication.emiPerMonth=selectedLoan.emiPerMonth;
+      this.loanApplication.tenure=selectedLoan.maxTenure;
+      console.log(selectedLoan.interestRate)
+      this.loanApplication.interestRate=selectedLoan.interestRate;
+
+
       
       console.log(this.loanApplication)
       this._userSrv.applyLoan(this.loanApplication).subscribe(

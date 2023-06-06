@@ -7,4 +7,7 @@ export class LoanApplications{
     bankName!:string;
     status!:string;
     emiPerMonth=0;
+    tenure=0;
+    interestRate=0.0;
+    appliedOn!:Date;
 }

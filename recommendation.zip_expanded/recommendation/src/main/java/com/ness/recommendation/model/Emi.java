@@ -12,24 +12,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoanApplications {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	int applicationId;
-	String email;
-	String loanType;
-    String loanId;
-    double interestRate;
-    int loanAmount;
-    String bankName;
-    String status;
-    int tenure;
-    LocalDate appliedOn;
-    double emiPerMonth;
+@Entity
+public class Emi {
 
+	@Id
+	String emiId;
+	int applicationId;
+	String loanId;
+	String email;
+	LocalDate dateOfPayment;
+	int emiNo;
+	int beginningLoanBalance;
+	int emi;
+	int principal;
+	int monthlyInterest;
+	int outstandingBalance;
+	String status;
+	
 }

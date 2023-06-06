@@ -4,7 +4,7 @@ export class AutoLoan{
 	url!:string;
 	 autoType='';
       bankName='';
-	interestRate='';
+	interestRate=0.0;
 	 maxLoanAmt='';
 	 maxTenure='';
 	 processingFee='';
