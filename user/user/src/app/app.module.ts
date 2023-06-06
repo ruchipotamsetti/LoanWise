@@ -25,6 +25,7 @@ import { DocumentationComponent } from './documentation/documentation.component'
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
 
@@ -49,6 +50,7 @@ import { RouterModule } from '@angular/router';
     AdminDashboardComponent,
     HomeDashboardComponent,
     AdminLoginComponent,
+    AboutusComponent,
     ContactComponent,
     
     
