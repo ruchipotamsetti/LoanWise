@@ -27,5 +27,6 @@ public class PersonalLoan {
 	int minSalaryForSalaried;
 	int minSalaryForSelfEmployed;
 	int minCreditScore;
-	double contact;
+	String contact;
+	double emiPerMonth;
 }

@@ -9,7 +9,7 @@ import com.example.nessApiGatewayjwt.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    User findByEmail(String emial);
+   public User findByEmail(String email);
     
    public User findByEmailAndSecQuestionAndSecAnswer(String email,String secQuestion,String secAnswer);
 

@@ -9,6 +9,8 @@ public interface UserService {
 
 	public User findByEmailAndSecQuestionAndSecAnswer(String email,String secQuestion,String secAnswer);
 	
+	public User getUserById(String email);
+	
 	public User resetPassword(User user);
 	
 	

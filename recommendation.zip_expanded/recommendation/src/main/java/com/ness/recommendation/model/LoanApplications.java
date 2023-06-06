@@ -24,5 +24,6 @@ public class LoanApplications {
     int loanAmount;
     String bankName;
     String status;
+    double emiPerMonth;
 
 }

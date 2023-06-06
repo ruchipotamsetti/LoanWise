@@ -1,6 +1,9 @@
 package  com.example.nessApiGatewayjwt.controller;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -97,11 +100,13 @@ public class UserController {
         return jwtUtil.generateToken(authRequest.getEmail());
     }
     
-    @GetMapping("na/getcreditscore/{email}")
-    public int getCreditScore(@PathVariable String email){
-    	User found = userRepository.findByEmail(email);
+    @PostMapping("na/userbyid")
+    public User getUserById(@RequestBody AuthRequest authRequest){
+    	//System.out.println(email);
+    	return userService.getUserById(authRequest.getEmail());
+    	//return creditScore;
+//    	return new ResponseEntity<Integer>(creditScore, HttpStatus.OK);
     	
-    	return found.getCreditScore();
     }
     
 

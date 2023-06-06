@@ -3,7 +3,7 @@ package com.ness.recommendation.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
+import ch.qos.logback.core.joran.spi.NoAutoStart;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +31,6 @@ public class AutoLoan {
 	int minSalaryForSalaried;
 	int minSalaryForSelfEmployed;
 	int minCreditScore;
-	double contact;
+	String contact;
+	double emiPerMonth;
 }
