@@ -1,10 +1,12 @@
 package  com.example.nessApiGatewayjwt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,6 +95,13 @@ public class UserController {
             throw new Exception("inavalid username/password");
         }
         return jwtUtil.generateToken(authRequest.getEmail());
+    }
+    
+    @GetMapping("na/getcreditscore/{email}")
+    public int getCreditScore(@PathVariable String email){
+    	User found = userRepository.findByEmail(email);
+    	
+    	return found.getCreditScore();
     }
     
 

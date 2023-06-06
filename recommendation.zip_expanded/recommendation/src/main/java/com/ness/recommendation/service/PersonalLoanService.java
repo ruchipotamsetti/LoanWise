@@ -14,10 +14,9 @@ public interface PersonalLoanService {
 	
 	//public List<PersonalLoan> getByRequest(RecommendationForm recommendationForm);
 	
-	public List<PersonalLoan> getByRequest(double interestrate,int loanamt,String occupationType,int tenure,int salary);
+	public List<PersonalLoan> getByRequest(double interestrate,int loanamt,String occupationType,int tenure,int salary, int creditScore);
 
 	public List<PersonalLoan> getByRequestByForm(RecommendationForm recommendationForm);
-
 
 //	public List<PersonalLoan> intRateTest(double interestRate);
 	

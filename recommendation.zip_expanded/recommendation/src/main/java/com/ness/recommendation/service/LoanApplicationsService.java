@@ -12,6 +12,7 @@ public interface LoanApplicationsService {
 	public LoanApplications saveApplication(LoanApplications loanApplication);
 	public List<LoanApplications> getAllApplications();
 	public List<LoanApplications> findByEmail(String email);
-	public String updateLoanStatus(int applicationId);
+	public String updateAsApproved(int applicationId);
+	public String updateAsRejected(int applicationId);
 	
 }
