@@ -31,10 +31,10 @@
           <td><button (click)="viewDocs(app.email)" class="btn btn-primary">View Docs</button></td>
 
           <td>
-            <button (click)="approve(app)" class="btn btn-success" style="margin-right: 10px;" >
+            <button (click)="approve(app)" class="btn btn-success" style="margin-right: 10px;" [ngStyle]="{'color': (app.status=='Approved') ? 'true' : 'false'}" >
               Approve
             </button>
-            <button (click)="reject(app)" class="btn btn-danger" >
+            <button (click)="reject(app)" class="btn btn-danger" [ngStyle]="{'disabled': (app.status=='Rejected') ? 'true' : 'false'}">
               Reject
             </button>
           </td>
