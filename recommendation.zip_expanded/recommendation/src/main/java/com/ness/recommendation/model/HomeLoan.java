@@ -27,5 +27,5 @@ public class HomeLoan {
 	int minSalaryForSalaried;
 	int minSalaryForSelfEmployed;
 	int minCreditScore;
-	int contact;
+	double contact;
 }

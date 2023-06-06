@@ -1,7 +1,7 @@
 
 <!-- <p>register works!</p> -->
 
-<form (ngSubmit)="forgotBySecurityQues()" [formGroup]="forgotForm">
+<!-- <form (ngSubmit)="forgotBySecurityQues()" [formGroup]="forgotForm">
     <table align="center">
         <tbody>
             <tr>
@@ -39,4 +39,31 @@
             </tr>
         </tbody>
     </table>
-</form>
+</form> -->
+
+
+
+<div class="forgot-password-form">
+    <h2>Forgot Password</h2>
+    <form (ngSubmit)="forgotBySecurityQues()" [formGroup]="forgotForm">
+      <div class="form-row">
+        <label>Email:</label>
+        <input type="email" required [(ngModel)]="user.email" name="user.email" formControlName="email">
+      </div>
+      <div class="form-row">
+        <label>Security Question:</label>
+        <select required [(ngModel)]="user.secQuestion" name="user.secQuestion" formControlName="secQuestion">
+          <option value="">Select a security question</option>
+          <option value="firstCompany">What's your first company?</option>
+          <option value="favoriteFood">What's your favorite food?</option>
+          <option value="petName">What's your pet name?</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Security Answer:</label>
+        <input type="text" required [(ngModel)]="user.secAnswer" name="user.secAnswer" formControlName="secAnswer">
+      </div>
+      <label></label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>

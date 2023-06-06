@@ -3,13 +3,16 @@ import { Documentation } from '../documentation.model';
 import { AdminDashboardService } from '../admin-dashboard.service';
 import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
+import {AdminLoginService} from '../admin-login.service';
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  constructor(private _router:Router, private _adminService: AdminDashboardService){}
+  constructor(private _router:Router, private _adminService: AdminDashboardService,
+    private adminLoginService:AdminLoginService){}
 
 ngOnInit(){
   //this.viewDocs();
@@ -72,22 +75,37 @@ ngOnInit(){
     return new Blob([uintArray], { type: 'application/pdf' });
   }
 
-stat:string="approve";
-reject:string="reject"
 
-  aprrove(documentation:Documentation){
+  approve(loanApplication:LoanApplications){
     //documentation.status=this.stat;
-    this._adminService.approve(documentation).subscribe(
+    this._adminService.approve(loanApplication).subscribe(
       data=>{
         console.log(data);
        // console.log(this.selectTeam);
         alert(data);
+        this.getAllApplications();
       },
       error=>{
         console.log(error);
       }
     )
   }
+
+  reject(loanApplication:LoanApplications){
+    //documentation.status=this.stat;
+    this._adminService.reject(loanApplication).subscribe(
+      data=>{
+        console.log(data);
+       // console.log(this.selectTeam);
+        alert(data);
+        this.getAllApplications();
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
   email:string='';
   applications: LoanApplications[] = [];
   getAllApplications(){
@@ -104,5 +122,8 @@ reject:string="reject"
         console.log(error)
       }
     )
+  }
+  logout() {
+    this.adminLoginService.logout();
   }
 }
