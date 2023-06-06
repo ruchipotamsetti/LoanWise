@@ -1,6 +1,6 @@
 <!-- <p>register works!</p> -->
 
-<form (ngSubmit)="signup()" [formGroup]="regForm">
+<!-- <form (ngSubmit)="signup()" [formGroup]="regForm">
     <table align="center">
         <tbody>
             <tr>
@@ -139,4 +139,83 @@
 
         </tbody>
     </table> 
-</form>
+</form> -->
+
+
+<br>
+<br>
+<div class="registration-form">
+    <h2>Registration</h2>
+    <form (ngSubmit)="signup()" [formGroup]="regForm">
+      <div class="form-row">
+        <label>Email:</label>
+        <input type="email" required [(ngModel)]="user.email" name="user.email" formControlName="email">
+      </div>
+      <div class="form-row">
+        <label>Password:</label>
+        <input type="password" required [(ngModel)]="user.password" name="user.password" formControlName="password">
+      </div>
+      <div class="form-row">
+        <label>Security Question:</label>
+        <select required [(ngModel)]="user.secQuestion" name="user.secQuestion" formControlName="secQuestion">
+          <option value="">Select a security question</option>
+          <option value="firstCompany">What's your first company?</option>
+          <option value="favoriteFood">What's your favorite food?</option>
+          <option value="petName">What's your pet name?</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Security Answer:</label>
+        <input type="text" required  [(ngModel)]="user.secAnswer" name="user.secAnswer" formControlName="secAnswer">
+      </div>
+      <div class="form-row">
+        <label>First Name:</label>
+        <input type="text" required [(ngModel)]="user.firstName" name="user.firstName" formControlName="firstName">
+      </div>
+      <div class="form-row">
+        <label>Last Name:</label>
+        <input type="text" required [(ngModel)]="user.lastName" name="user.lastName" formControlName="lastName">
+      </div>
+      <div class="form-row">
+        <label>Pancard:</label>
+        <input type="text" required [(ngModel)]="user.panCard" name="user.panCard" formControlName="panCard">
+      </div>
+      <div class="form-row">
+        <label>Mobile Number:</label>
+        <input type="tel" required [(ngModel)]="user.mobile" name="user.mobile" formControlName="mobile">
+      </div>
+      <div class="form-row">
+        <label>Address:</label>
+        <input type="text" required [(ngModel)]="user.address" name="user.address" formControlName="address">
+      </div>
+      <div class="form-row">
+        <label>City:</label>
+        <input type="text" required [(ngModel)]="user.state" name="user.state" formControlName="state">
+      </div>
+      <div class="form-row">
+        <label>State:</label>
+        <input type="text" required [(ngModel)]="user.state" name="user.state" formControlName="state">
+      </div>
+      <div class="form-row">
+        <label>Country:</label>
+        <input type="text" required [(ngModel)]="user.country" name="user.country" formControlName="country">
+      </div>
+      <div class="form-row">
+        <label>Pincode:</label>
+        <input type="text" required [(ngModel)]="user.pincode" name="user.pincode" formControlName="pincode">
+      </div>
+      <div class="form-row">
+        <label>Occupation Type:</label>
+        <select required [(ngModel)]="user.occupationType" name="user.occupationType" formControlName="occupationType">
+          <option value="">Select occupation type</option>
+          <option value="salaried">Salaried</option>
+          <option value="selfEmployed">Self Employed</option>
+        </select>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <br>
+  <br>
+
