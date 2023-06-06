@@ -63,28 +63,17 @@ public class EmiServiceImpl implements EmiService{
             emiDetails.setOutstandingBalance(outstandingBalance);
             emiDetails.setStatus("Unpaid");
             
-            System.out.println(month+" "+emiDetails);
          
             emiList.add(emiDetails);
             
             
             
         }
-        System.out.println(emiList.size());
-       
-        
-        
+
         
         List<Emi> newList=new ArrayList<>();
         newList.addAll(emiList);
         System.out.println(newList.size());
-        
-        
-        
-        
-        
-        newList.add(new Emi("myid", 100, "aa","aa",LocalDate.now(), 0, 1, 0, 11, 1, 5,""));
-        
         
         emirepo.saveAll(newList);
         
@@ -98,4 +87,14 @@ public class EmiServiceImpl implements EmiService{
                 (onePlusInterestRatePower - 1);
         return emi;
     }
+
+	@Override
+	public List<Emi> getEmisByEmail(String email) {
+		// TODO Auto-generated method stub
+		List<Emi> found = emirepo.findByEmail(email);
+		if(found!= null) {
+			return found;
+		}
+		return null;
+	}
 }

@@ -142,6 +142,11 @@ public class RecommendationController {
 		return emiService.generateEmis(loanApplication);
 	}
 	
+	@GetMapping("getemi/{email}")
+	public ResponseEntity<List<Emi>> getEmisByEmail(@PathVariable String email){
+		return new ResponseEntity<List<Emi>>(emiService.getEmisByEmail(email), HttpStatus.OK);
+	}
+	
 	
 	
 
