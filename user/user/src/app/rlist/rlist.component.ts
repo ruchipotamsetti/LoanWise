@@ -60,18 +60,31 @@ export class RlistComponent {
         case 'Home Loan':
           const home = localStorage.getItem('home')+'';
           this.homeArray =JSON.parse(home);
+          if(this.homeArray.length==0){
+            alert("No recommendations to show!")
+            this._router.navigate(['/recomform'])
+          }
           this.selectedLoanArray = this.homeArray;
           break;
     
         case 'Personal Loan':
           const personal = localStorage.getItem('personal')+'';
           this.personalArray =JSON.parse(personal);
+          if(this.personalArray.length==0){
+            alert("No recommendations to show!")
+            this._router.navigate(['/recomform'])
+          }
+          console.log("PersonalArray: "+this.personalArray+" hello")
           this.selectedLoanArray = this.personalArray;
           break;
     
         case 'Auto Loan':
           const auto = localStorage.getItem('auto')+'';
           this.autoArray =JSON.parse(auto);
+          if(this.autoArray.length==0){
+            alert("No recommendations to show!")
+            this._router.navigate(['/recomform'])
+          }
           this.selectedLoanArray = this.autoArray;
           break;
     

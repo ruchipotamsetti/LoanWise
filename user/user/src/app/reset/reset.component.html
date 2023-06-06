@@ -1,27 +1,35 @@
-<form (ngSubmit)="reset()" [formGroup]="resetForm">
-    <table align="center">
-        <tbody>
-            <tr>
-                <td>
-                    <label>Password</label>
-                </td>
-                <td>
-                    <input type="password" [(ngModel)]="user.password" name="user.password" formControlName="newpassword" required>
-                </td>
-            </tr>
 
-            <tr>
-                <td>
-                    <label>Confirm Password</label>
-                </td>
-                <td>
-                    <input type="password"  name="user.password" formControlName="confirmpassword" required>
-                </td>
-            </tr>
-            
-            <tr>
-                <td><input type="submit" value="Reset"></td>
-            </tr>
-        </tbody>
-    </table>
-</form>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="reset-password-form">
+    <h2>Reset Password</h2>
+    <form (ngSubmit)="reset()" [formGroup]="resetForm">
+      <div class="form-row">
+        <label>Password:</label>
+        <input type="password" name="password" required [(ngModel)]="user.password" name="user.password" formControlName="newpassword">
+      </div>
+      <div class="form-row">
+        <label>Confirm Password:</label>
+        <input type="password" name="confirmPassword" required name="user.password" formControlName="confirmpassword">
+      </div>
+      <div class="form-row">
+        <label></label>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+  <br>
+<br>
+<br>
+<br>
+<br>

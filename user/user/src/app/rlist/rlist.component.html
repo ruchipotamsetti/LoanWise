@@ -1,10 +1,10 @@
-<section class="banner banner-secondary" id="top" style="background-image: url(img/banner-image-1-1920x300.jpg);">
+<section class="banner banner-secondary" id="top" style="background-image: url(../assets/img/banner-image-1-1920x300.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="banner-caption">
                     <div class="line-dec"></div>
-                    <h2>Jobs</h2>
+                    <h2>Recommendations</h2>
                 </div>
             </div>
         </div>
@@ -21,13 +21,13 @@
                 <div class="col-md-8 col-xs-12" >
                     <div class="row">
                         <div>
-                            <div class="col-sm-5 col-xs-12" *ngFor="let loan of selectedLoanArray">
+                            <div class="col-sm-4  col-xs-12" *ngFor="let loan of selectedLoanArray">
 
                                 <div class="featured-item">
                                 <div class="thumb">
 
                                     <div class="thumb-img">
-                                        <img src="{{loan.image}}" alt="">
+                                        <img src="{{loan.image}}" alt="" height =150 width =200>
                                     </div>
 
                                     <!-- <div class="overlay-content">
@@ -40,13 +40,14 @@
                                 <div class="down-content" >
                                     <h4>{{loan.bankName}}</h4>
 
-                                    <p> <b>Interest Rate:</b>{{loan.interestRate}}</p>
+                                    <p> <b>Interest Rate:</b> &nbsp;{{loan.interestRate}}%</p>
                                     <p> <b>EMI Per Month:</b>{{loan.emiPerMonth}}</p>
+                                    <p> <b>Loan Amount:</b>&nbsp;{{loan.maxLoanAmt}}</p>
 
-                                    <p><span>Max Loan Amount<strong><sup>$</sup>{{loan.maxLoanAmt}}</strong></span></p>
+                                    <!-- <p><span> Loan Amount<strong><sup>$</sup>{{loan.maxLoanAmt}}</strong></span></p> -->
 
-                                    <div class="text-button">
-                                        <button (click)="viewMore(loan)">View More</button>
+                                    <div  >
+                                        <button class="equal-button" (click)="viewMore(loan)">View More</button>
                                         <!-- <a href="job-details.html">View More</a> -->
                                     </div>
                                 </div>

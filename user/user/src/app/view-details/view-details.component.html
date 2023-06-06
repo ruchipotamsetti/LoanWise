@@ -1,11 +1,11 @@
-<section class="banner banner-secondary" id="top" style="background-image: url(img/banner-image-1-1920x300.jpg);">
+<section class="banner banner-secondary" id="top" style="background-image: url(../assets/img/banner-image-1-1920x300.jpg);">
   <div class="container">
       <div class="row">
           <div class="col-md-10 col-md-offset-1">
               <div class="banner-caption">
                   <div class="line-dec"></div>
-                  <h2>Security officer - luxury retail</h2>
-                  <h4><i class="fa fa-briefcase"></i> Security / Protective services jobs</h4>
+                  <h2>Here are the Loan details</h2>
+                  <!-- <h4><i class="fa fa-briefcase"></i> Security / Protective services jobs</h4> -->
               </div>
           </div>
       </div>
@@ -16,12 +16,12 @@
   <section class="featured-places">
       <div class="container">
          <div class="row">
-            <div class="col-lg-3 col-md-3 col-xs-12">
+             <div class="col-lg-3 col-md-3 col-xs-12">
               <div>
-                <img src={{selectedLoan.image}} alt="" class="img-responsive wc-image">
+                 <img src={{selectedLoan.image}} alt="" class="img-responsive wc-image" height =400> 
               </div>
               <br>
-            </div>
+            </div> 
 
             <div class="col-lg-9 col-md-9 col-xs-12">
               <h2><strong class="text-primary">{{selectedLoan.bankName}}</strong></h2>
@@ -29,13 +29,15 @@
               <p class="lead">
                  <b>Max Loan Amount:&nbsp;</b><i class="fa-solid fa-indian-rupee-sign"></i>{{selectedLoan.maxLoanAmt}}&nbsp;&nbsp;
                 <i class="fa-solid fa-timer"></i><b>Max Tenure:</b>&nbsp;{{selectedLoan.maxTenure}}  Years&nbsp;&nbsp;
-                <i class="fa-solid fa-percent"></i>&nbsp;<b>Interest Rate:</b>&nbsp;{{selectedLoan.interestRate}}
-                <i class="fa-solid fa-percent"></i>&nbsp;<b>EMI Per Month:</b>&nbsp;{{selectedLoan.emiPerMonth}}
+                <i class=""></i>&nbsp;<b>Interest Rate:</b>&nbsp;{{selectedLoan.interestRate}}
+                <!-- <i class=""></i>&nbsp;<b>EMI Per Month:</b>&nbsp;{{selectedLoan.emiPerMonth}} -->
               </p>
+              <p class="lead"><i class=""></i>&nbsp;<b>EMI Per Month:</b>&nbsp;{{selectedLoan.emiPerMonth}}</p>
 
-              <div class="blue-button">
-                    <button (click)="applyLoan(selectedLoan)">Apply for this loan</button>
-                </div>
+                <div class="blue-button">
+                  <a  (click)="applyLoan(selectedLoan)">Apply for this loan</a>
+              </div>
+                
             </div>
           </div>
 
@@ -116,7 +118,7 @@
                           <br>
                           
                           <strong>
-                            <a href="http://www.cannonguards.com/">http://www.cannonguards.com/</a>
+                            <a href="http://www.cannonguards.com/">http://www.cannonguards.com</a>
                           </strong>
                         </p>
                       </div>

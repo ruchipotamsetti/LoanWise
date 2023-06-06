@@ -12,7 +12,14 @@ export class HomeDashboardComponent {
 
   constructor(private _homeSrv:HomedashboardService, private _router:Router){}
 ngOnInit(): void {
-   this.getAllApplications()
+  if(localStorage.getItem('email')){
+    this.getAllApplications()
+  }
+  else{
+    alert("Please login to view your applications")
+    this._router.navigate(['/login'])
+  }
+   
 }
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
