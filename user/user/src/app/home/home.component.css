@@ -1,0 +1,41 @@
+.carousel-item{
+    position: relative;
+}
+.carousel_overlay{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 110%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.carousel-caption{
+    font-size: 1.8rem;
+    color: rgb(246, 245, 245);
+    font-family: 'Rajdhani', sans-serif;
+    position: relative;
+    &_1{
+        position: absolute;
+        top: 5rem;
+        left: 46rem;
+    }
+    &_2{
+        position: absolute;
+        top: 5rem;
+        left: 15rem;
+    }
+    &_3{
+        position: absolute;
+        top: 5rem;
+        left: 46rem;
+    }
+}
+.carousel-inner{
+    height: 23rem;
+    &__img{
+        height: 23rem;
+    }
+}
+h5{
+    font-size: 2rem;
+}
