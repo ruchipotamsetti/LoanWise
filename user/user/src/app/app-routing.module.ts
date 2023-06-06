@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:"viewDocs", component: AdminDashboardComponent},
   {path:"homeDashboard", component: HomeDashboardComponent},
   {path:"adminLogin", component: AdminLoginComponent},
-  {path:"aboutus", component: AboutusComponent}
+  {path:"aboutus", component: AboutusComponent},
   {path:"adminLogin", component: AdminLoginComponent},
   {path:"contact", component:ContactComponent}
 ];
