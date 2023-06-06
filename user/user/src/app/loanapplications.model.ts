@@ -6,4 +6,5 @@ export class LoanApplications{
     loanAmount!:number;
     bankName!:string;
     status!:string;
+    emiPerMonth=0;
 }

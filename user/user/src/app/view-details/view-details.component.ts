@@ -4,6 +4,7 @@ import { RecommendationService } from '../recommendation.service';
 import { LoanApplications } from '../loanapplications.model';
 import { UserService } from '../user.service';
 import { NavigationEnd } from '@angular/router';
+import { RecommendForm } from '../RecommendForm.model';
 
 @Component({
   selector: 'app-view-details',
@@ -60,6 +61,7 @@ getDetailById(){
 
     
     loanApplication= new LoanApplications();
+    
     applyLoan(selectedLoan:any){
       console.log("Inside apply loan()")
       this.loanApplication.bankName=selectedLoan.bankName;
@@ -67,6 +69,7 @@ getDetailById(){
       this.loanApplication.loanAmount=selectedLoan.maxLoanAmt;
       this.loanApplication.loanId=selectedLoan.loanId;
       this.loanApplication.loanType=localStorage.getItem("loanType")+'';
+      this.loanApplication.emiPerMonth=selectedLoan.emiPerMonth;
       
       console.log(this.loanApplication)
       this._userSrv.applyLoan(this.loanApplication).subscribe(

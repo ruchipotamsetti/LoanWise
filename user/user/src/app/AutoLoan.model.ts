@@ -14,4 +14,5 @@ export class AutoLoan{
  minSalaryForSalaried='';
 	 minCreditScore='';
  contact='';
+ emiPerMonth=0
 }

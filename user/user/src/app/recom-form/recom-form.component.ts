@@ -5,6 +5,7 @@ import { PersonalLoan } from '../personalLoan.model';
 import { RecommendationService } from '../recommendation.service';
 import { RecommendForm } from '../RecommendForm.model';
 import { UserService } from '../user.service';
+import { AuthRequest } from '../authRequest.model';
 
 @Component({
   selector: 'app-recom-form',
@@ -54,8 +55,9 @@ export class RecomFormComponent {
     this.getCreditScore();
     let credit =localStorage.getItem('creditScore')+'';
     let credit1=parseInt(credit);
-    console.log('Inside submitRecomForm: '+credit1)
+    //console.log('Inside submitRecomForm: '+credit1)
     this.rForm.creditScore = credit1;
+    
     if(this.recomForm.valid){
       localStorage.setItem("loanType",this.rForm.loanType);
 
@@ -64,11 +66,11 @@ export class RecomFormComponent {
         this._recomSrv.getPersonalLoan(this.rForm).subscribe(
           data=>{
             
-            console.log("This is data"+data);
+            //console.log("This is data"+data);
             localStorage.setItem('personal', JSON.stringify(data));
             //const hello=new PersonalLoan();
             const hello=localStorage.getItem("personal");
-            console.log("From database/Localstorage"+hello)
+            //console.log("From database/Localstorage"+hello)
             if(hello!=null){
               this._router.navigate(['/rlist'])
               alert("here are the recommendations")
@@ -120,14 +122,16 @@ export class RecomFormComponent {
 
   }
 
-  email!:string;
+  // email!:string;
+  authRequest = new AuthRequest();
   getCreditScore(){
 
-    this.email = localStorage.getItem('email')+'';
-    this._userSrv.getCreditScore(this.email).subscribe(
+    this.authRequest.email = localStorage.getItem('email')+'';
+    this._userSrv.getUserById(this.authRequest).subscribe(
       data=>{
         console.log(data)
-        localStorage.setItem('creditScore',data.toString());
+        console.log('credit score: '+data.creditScore)
+        localStorage.setItem('creditScore',data.creditScore.toString());
       },
       error=>{
 

@@ -12,5 +12,6 @@ export class HomeLoan{
 	minSalaryForSalaried=0;
 	minSalaryForSelfEmployed=0;
 	minCreditScore=0;
-	contact=0;
+	contact='';
+	emiPerMonth=0
 }
