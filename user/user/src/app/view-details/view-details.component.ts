@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RecommendationService } from '../recommendation.service';
 import { LoanApplications } from '../loanapplications.model';
 import { UserService } from '../user.service';
+import { NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-view-details',
@@ -15,13 +16,13 @@ constructor(private _recomSrv:RecommendationService, private _userSrv : UserServ
 selectedLoan:any;
 pageReload=false;
 ngOnInit(){
+  this._router.events.subscribe((event) => {
+    if (event instanceof NavigationEnd) {
+      // Perform a page reload once
+      window.location.reload();
+    }
+  });
 
-  //window.location.href= '/viewdetails'
-  // window.location.reload();
-  //window.location.replace(window.location.href)
-  // this.reload();
-  // this._router.navigate(['/viewdetails'])
-  // window.location.href='/viewdetails';
   let loan = localStorage.getItem('selectedLoan')
   if(loan!=null){
     this.selectedLoan=JSON.parse(loan);
