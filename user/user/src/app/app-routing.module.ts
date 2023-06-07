@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:"homeDashboard", component: HomeDashboardComponent},
   {path:"adminLogin", component: AdminLoginComponent},
   {path:"aboutus", component: AboutusComponent},
-  {path:"adminLogin", component: AdminLoginComponent},
+  {path:"adminDashboard", component: AdminLoginComponent},
   {path:"contact", component:ContactComponent}
 ];
 
