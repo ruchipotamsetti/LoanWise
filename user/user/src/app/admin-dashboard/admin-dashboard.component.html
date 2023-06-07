@@ -109,12 +109,13 @@
         <th scope="col">Email</th>
         <th scope="col">Date Of Payment</th>
         <th scope="col">Emi No.</th>
-        <th scope="col">Beginning Loan Balance</th>
+        <!-- <th scope="col">Beginning Loan Balance</th> -->
         <th scope="col">Emi</th>
         <th scope="col">Principal</th>
-        <th scope="col">Monthly Interest</th>
-        <th scope="col">Outstanding Balance</th>
+        <!-- <th scope="col">Monthly Interest</th> -->
+        <!-- <th scope="col">Outstanding Balance</th> -->
         <th scope="col">Status</th>
+        <th scope="col">Approve or Reject</th>
       </tr>
     </thead>
     <tbody>
@@ -125,12 +126,25 @@
         <td>{{emi.email}}</td>
         <td>{{emi.dateOfPayment}}</td>
         <td>{{emi.emiNo}}</td>
-        <td>{{emi.beginningLoanBalance}}</td>
+        <!-- <td>{{emi.beginningLoanBalance}}</td> -->
         <td>{{emi.emi}}</td>
         <td>{{emi.principal}}</td>
-        <td>{{emi.monthlyInterest}}</td>
-        <td>{{emi.outstandingBalance}}</td>
+        <!-- <td>{{emi.monthlyInterest}}</td> -->
+        <!-- <td>{{emi.outstandingBalance}}</td> -->
         <td>{{emi.status}}</td>
+        <td>
+
+          <button (click)="approveEmi(emi)" class="btn btn-success" style="margin-right: 10px;"
+          [disabled]=" (emi.status=='Processing') ? false : true" >
+            Approve
+          </button>
+
+          <button (click)="rejectEmi(emi)" class="btn btn-danger" 
+          [disabled]=" (emi.status=='Processing') ? false : true" >
+            Reject
+          </button>
+
+        </td>
       </tr>
     </tbody>
   </table>

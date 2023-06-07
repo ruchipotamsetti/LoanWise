@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
 import {AdminLoginService} from '../admin-login.service';
 import {Emi} from '../emi.model';
+import { SharedHeaderFooterService } from '../shared-header-footer.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,7 +16,7 @@ export class AdminDashboardComponent {
   showHeaderAndFooter=false;
 
   constructor(private _router:Router, private _adminService: AdminDashboardService,
-    private adminLoginService:AdminLoginService){}
+    private adminLoginService:AdminLoginService, private sharedService:SharedHeaderFooterService){}
 
 ngOnInit(){
   //this.viewDocs();
@@ -24,6 +25,7 @@ ngOnInit(){
     this._router.navigate(['/adminLogin'])
   }
   this.getAllApplications();
+  this.sharedService.parentProperty = false; 
 }
 
   documentations:Documentation[]=[];
@@ -159,6 +161,35 @@ ngOnInit(){
         console.log(data);
         this.showEmiTable=true;
        this.emiTable = data;
+       this.emiTable.sort((a, b) =>  a.emiNo - b.emiNo);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  approveEmi(emi:Emi){
+    let status = "Approved"
+    emi.status = status;
+    this._adminService.updateEmiStatus(emi).subscribe(
+      data=>{
+        console.log(data)
+        //this.getEmiTable(email, applicationId);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  rejectEmi(emi:Emi){
+    let status = "Rejected"
+    emi.status = status;
+    this._adminService.updateEmiStatus(emi).subscribe(
+      data=>{
+        console.log(data)
+        //this.getEmiTable(email, applicationId);
       },
       error=>{
         console.log(error);

@@ -40,4 +40,10 @@
   .table tbody td {
     text-align: center;
   }
+
+  .table-responsive{
+    margin: 6rem 6rem;
+  }
+
   
+ 
