@@ -28,6 +28,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 
 
@@ -64,7 +66,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     AngularFireAuthModule,
     NgOtpInputModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,11 +34,10 @@ const routes: Routes = [
   {path:"rlist",component:RlistComponent},
   {path:"viewdetails",component:ViewDetailsComponent},
   {path:"documentationForm", component: DocumentationComponent},
-  {path:"viewDocs", component: AdminDashboardComponent},
+  {path:"adminDashboard", component: AdminDashboardComponent},
   {path:"homeDashboard", component: HomeDashboardComponent},
-  {path:"adminLogin", component: AdminLoginComponent},
   {path:"aboutus", component: AboutusComponent},
-  {path:"adminDashboard", component: AdminLoginComponent},
+  {path:"adminLogin", component: AdminLoginComponent},
   {path:"contact", component:ContactComponent}
 ];
 

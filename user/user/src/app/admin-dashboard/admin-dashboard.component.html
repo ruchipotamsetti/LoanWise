@@ -14,7 +14,7 @@
           <th>Status</th>
           <th>Documents</th>
           <th>Approve or Reject</th>
-          <th>Get EMI table</th>
+          <th>EMI</th>
         </tr>
       </thead>
       <tbody>
@@ -98,41 +98,44 @@
 </table>
 
 
-<!-- {{emi.email}} -->
-<table border="2" style="border-collapse: collapse; width: 100%;" class="table">
-  <thead>
-  <td>emiId</td>
-	<td>applicationId</td>
-	<td>loanId</td>
-	<td>email</td>
-	<td>dateOfPayment</td>
-	<td>emiNo</td>
-	<td>beginningLoanBalance</td>
-	<td>emi</td>
-	<td>principal</td>
-	<td>monthlyInterest</td>
-	<td>outstandingBalance</td>
-	<td>status</td>
-    
-  </thead>
-  <tbody>
-    <tr *ngFor="let emi of emiTable">
-      <td>{{emi.emiId}}</td>
-      <td>{{ emi.applicationId }}</td>
-      <td>{{ emi.loanId }}</td>
-      <td>{{ emi.email }}</td>
-      <td>{{ emi.loanId }}</td>
-      <td>{{ emi.dateOfPayment }}</td>
-      <td>{{ emi.emiNo }}</td>
-      <td>{{ emi.beginningLoanBalance }}</td>
-      <td>{{ emi.emi }}</td>
-      <td>{{ emi.principal }}</td>
-      <td>{{ emi.monthlyInterest }}</td>
-      <td>{{ emi.outstandingBalance }}</td>
-      <td>{{ emi.status }}</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="table-responsive">
+  <table class="table table-dark" style="border-collapse: collapse; width: 100%;" *ngIf="showEmiTable">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">EmiId</th>
+        <th scope="col">Application Id</th>
+        <th scope="col">LoanId</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date Of Payment</th>
+        <th scope="col">Emi No.</th>
+        <th scope="col">Beginning Loan Balance</th>
+        <th scope="col">Emi</th>
+        <th scope="col">Principal</th>
+        <th scope="col">Monthly Interest</th>
+        <th scope="col">Outstanding Balance</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emi of emiTable">
+        <td>{{emi.emiId}}</td>
+        <td>{{emi.applicationId}}</td>
+        <td>{{emi.loanId}}</td>
+        <td>{{emi.email}}</td>
+        <td>{{emi.dateOfPayment}}</td>
+        <td>{{emi.emiNo}}</td>
+        <td>{{emi.beginningLoanBalance}}</td>
+        <td>{{emi.emi}}</td>
+        <td>{{emi.principal}}</td>
+        <td>{{emi.monthlyInterest}}</td>
+        <td>{{emi.outstandingBalance}}</td>
+        <td>{{emi.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 
   
