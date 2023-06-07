@@ -28,4 +28,8 @@ export class AdminDashboardService {
   reject(loanApplication:LoanApplications){
     return this._http.put<String>('http://localhost:9999/recommend/reject', loanApplication, {responseType: 'text' as 'json'});
   }
+
+  generateEmi(loanApplication: LoanApplications){
+    return this._http.post<LoanApplications>('http://localhost:9999/recommend/generateemi', loanApplication,{responseType: 'text' as 'json'});
+  }
 }

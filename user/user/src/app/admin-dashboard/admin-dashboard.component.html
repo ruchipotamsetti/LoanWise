@@ -1,7 +1,4 @@
 
-
-
-
  <button (click)="logout()">Log Out</button>
 
   <div class="table-responsive">
@@ -38,6 +35,9 @@
               Reject
             </button>
           </td>
+          <div *ngIf="statusApprove">
+            <button (click)="getEmitable(app)">Generate Emi Table</button>
+          </div>
 
         </tr>
       </tbody>
@@ -86,4 +86,43 @@
     </tr>
   </tbody>
 </table>
+
+
+{{emi.email}}
+<table border="2" style="border-collapse: collapse; width: 100%;">
+  <thead>
+  <td>emiId</td>
+	<td>applicationId</td>
+	<td>loanId</td>
+	<td>email</td>
+	<td>dateOfPayment</td>
+	<td>emiNo</td>
+	<td>beginningLoanBalance</td>
+	<td>emi</td>
+	<td>principal</td>
+	<td>monthlyInterest</td>
+	<td>outstandingBalance</td>
+	<td>status</td>
+    
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{emi.emiId}}</td>
+      <td>{{ emi.applicationId }}</td>
+      <td>{{ emi.loanId }}</td>
+      <td>{{ emi.email }}</td>
+      <td>{{ emi.loanId }}</td>
+      <td>{{ emi.dateOfPayment }}</td>
+      <td>{{ emi.emiNo }}</td>
+      <td>{{ emi.beginningLoanBalance }}</td>
+      <td>{{ emi.emi }}</td>
+      <td>{{ emi.principal }}</td>
+      <td>{{ emi.monthlyInterest }}</td>
+      <td>{{ emi.outstandingBalance }}</td>
+      <td>{{ emi.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
   

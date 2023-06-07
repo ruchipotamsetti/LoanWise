@@ -83,7 +83,7 @@ public class EmiServiceImpl implements EmiService{
         
         
         
-        newList.add(new Emi("myid", 100, "aa","aa",LocalDate.now(), 0, 1, 0, 11, 1, 5,""));
+//        newList.add(new Emi("myid", 100, "aa","aa",LocalDate.now(), 0, 1, 0, 11, 1, 5,""));
         
         
         emirepo.saveAll(newList);
