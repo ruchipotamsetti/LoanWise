@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" border="2" style="border-collapse: collapse; width: 100%;">
+    <table class="table table-dark" style="border-collapse: collapse; width: 100%;">
         <thead>
         <tr>
           <th>Application ID</th>
@@ -27,7 +27,7 @@
           <td>{{ app.loanId }}</td>
           <td>{{ app.loanType }}</td>
           <td>{{ app.appliedOn }}</td>
-          <td>{{ app.status }}</td>
+          <td [ngStyle]="{'color': (app.status=='Approved') ? 'green' : 'red'}">{{ app.status }}</td>
         </tr>
       </tbody>
     </table>

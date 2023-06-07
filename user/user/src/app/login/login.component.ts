@@ -32,7 +32,7 @@ export class LoginComponent {
           localStorage.setItem('token', data);
           localStorage.setItem('email', this.authRequest.email);
           console.log(data)
-          this._router.navigate(['/recomform'])
+          this._router.navigate(['/homeDashboard'])
           this.token=data;
   
         },
