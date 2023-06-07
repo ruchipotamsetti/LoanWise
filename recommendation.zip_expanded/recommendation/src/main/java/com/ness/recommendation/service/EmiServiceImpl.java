@@ -89,12 +89,29 @@ public class EmiServiceImpl implements EmiService{
     }
 
 	@Override
-	public List<Emi> getEmisByEmailAndApplicationId(String email, int applicationId) {
+	public List<Emi> getEmisByEmail(String email) {
 		// TODO Auto-generated method stub
-		List<Emi> found = emirepo.findByEmailAndApplicationId(email, applicationId);
+		List<Emi> found = emirepo.findByEmail(email);
 		if(found!= null) {
 			return found;
 		}
 		return null;
+	}
+	
+	@Override
+	public List<Emi> getEmisByEmailAndApplicationId(String email, int applicationId) {
+		 // TODO Auto-generated method stub
+		 List<Emi> found = emirepo.findByEmailAndApplicationId(email, applicationId);
+		 if(found!= null) {
+		 return found;
+		 }
+		 return null;
+	}
+
+	@Override
+	public String updateEmiStatus(String emiId, String status) {
+		// TODO Auto-generated method stub
+		emirepo.updateEmiStatus(emiId, status);
+		return emiId+" status set as "+status;
 	}
 }

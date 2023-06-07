@@ -14,6 +14,7 @@
           <th>Status</th>
           <th>Documents</th>
           <th>Approve or Reject</th>
+          <th>Get EMI table</th>
         </tr>
       </thead>
       <tbody>
@@ -28,18 +29,24 @@
           <td><button (click)="viewDocs(app.email)" class="btn btn-primary">View Docs</button></td>
 
           <td>
-            <button (click)="approve(app)" class="btn btn-success" style="margin-right: 10px;" [ngStyle]="{'color': (app.status=='Approved') ? 'true' : 'false'}" >
+
+            <button (click)="approve(app)" class="btn btn-success" style="margin-right: 10px;"
+            [disabled]=" (app.status=='Pending') ? false : true" >
               Approve
             </button>
-            <button (click)="reject(app)" class="btn btn-danger" [ngStyle]="{'disabled': (app.status=='Rejected') ? 'true' : 'false'}">
+
+            <button (click)="reject(app)" class="btn btn-danger" 
+            [disabled]=" (app.status=='Pending') ? false : true" >
               Reject
             </button>
+
           </td>
           <!-- <td *ngIf="statusApprove">
             <button (click)="generateEmitable(app)" class="btn btn-primary">Generate Emis</button>
           </td> -->
           <td >
-            <button (click)="getEmiTable(app.email, app.applicationId)" class="btn btn-primary">Get Emi Table</button>
+            <button (click)="getEmiTable(app.email, app.applicationId)" class="btn btn-primary"
+            [disabled]=" (app.status=='Approved') ? false : true">Get Emi Table</button>
           </td>
 
         </tr>
