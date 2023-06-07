@@ -12,11 +12,17 @@ import {Emi} from '../emi.model';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
+  showHeaderAndFooter=false;
+
   constructor(private _router:Router, private _adminService: AdminDashboardService,
     private adminLoginService:AdminLoginService){}
 
 ngOnInit(){
   //this.viewDocs();
+  if(localStorage.getItem('usertype')!='admin'){
+    alert("Please login to view Admin Dashboard")
+    this._router.navigate(['/adminLogin'])
+  }
   this.getAllApplications();
 }
 
@@ -76,7 +82,7 @@ ngOnInit(){
     return new Blob([uintArray], { type: 'application/pdf' });
   }
 
- statusApprove=false;
+ showEmiTable=false;
 
   approve(loanApplication:LoanApplications){
     //documentation.status=this.stat;
@@ -85,7 +91,7 @@ ngOnInit(){
         console.log(data);
        // console.log(this.selectTeam);
         alert(data);
-        this.statusApprove=true;
+       
         this.generateEmitable(loanApplication);
         this.getAllApplications();
       },
@@ -101,7 +107,7 @@ ngOnInit(){
       data=>{
         console.log(data);
        // console.log(this.selectTeam);
-       this.statusApprove=false;
+       
         alert(data);
         this.getAllApplications();
       },
@@ -137,7 +143,7 @@ ngOnInit(){
     this._adminService.generateEmi(loanApplication).subscribe(
       data=>{
         console.log(data);
-       
+        
       },
       error=>{
         console.log(error);
@@ -151,6 +157,7 @@ ngOnInit(){
     this._adminService.getEmi(email, applicationId).subscribe(
       data=>{
         console.log(data);
+        this.showEmiTable=true;
        this.emiTable = data;
       },
       error=>{

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedHeaderFooterService } from './shared-header-footer.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'user';
+  showHeaderAndFooter= true;
+
+ sharedService:SharedHeaderFooterService;
+constructor(shared :SharedHeaderFooterService){
+  this.sharedService=shared;
+  this.sharedService.parentProperty = true; // Set the initial value
+
+}
+
 }

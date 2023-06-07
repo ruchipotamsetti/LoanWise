@@ -28,3 +28,16 @@
       transform: translateX(-300%);
     }
   }
+
+  .table {
+    font-size: 14px;
+  }
+  
+  .table thead th {
+    text-align: center;
+  }
+  
+  .table tbody td {
+    text-align: center;
+  }
+  
