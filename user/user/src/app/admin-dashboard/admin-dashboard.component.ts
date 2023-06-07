@@ -86,6 +86,7 @@ ngOnInit(){
        // console.log(this.selectTeam);
         alert(data);
         this.statusApprove=true;
+        this.generateEmitable(loanApplication);
         this.getAllApplications();
       },
       error=>{
@@ -131,13 +132,26 @@ ngOnInit(){
     this.adminLoginService.logout();
   }
 
-  emi=new Emi();
 
-  getEmitable(loanApplication:LoanApplications){
+  generateEmitable(loanApplication:LoanApplications){
     this._adminService.generateEmi(loanApplication).subscribe(
       data=>{
         console.log(data);
        
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  emiTable:Emi[]=[];
+  getEmiTable(email:string, applicationId:number){
+
+    this._adminService.getEmi(email, applicationId).subscribe(
+      data=>{
+        console.log(data);
+       this.emiTable = data;
       },
       error=>{
         console.log(error);

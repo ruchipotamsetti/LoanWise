@@ -35,9 +35,12 @@
               Reject
             </button>
           </td>
-          <div *ngIf="statusApprove">
-            <button (click)="getEmitable(app)">Generate Emi Table</button>
-          </div>
+          <!-- <td *ngIf="statusApprove">
+            <button (click)="generateEmitable(app)" class="btn btn-primary">Generate Emis</button>
+          </td> -->
+          <td >
+            <button (click)="getEmiTable(app.email, app.applicationId)" class="btn btn-primary">Get Emi Table</button>
+          </td>
 
         </tr>
       </tbody>
@@ -88,8 +91,8 @@
 </table>
 
 
-{{emi.email}}
-<table border="2" style="border-collapse: collapse; width: 100%;">
+<!-- {{emi.email}} -->
+<table border="2" style="border-collapse: collapse; width: 100%;" class="table">
   <thead>
   <td>emiId</td>
 	<td>applicationId</td>
@@ -106,7 +109,7 @@
     
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let emi of emiTable">
       <td>{{emi.emiId}}</td>
       <td>{{ emi.applicationId }}</td>
       <td>{{ emi.loanId }}</td>

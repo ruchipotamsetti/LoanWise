@@ -11,6 +11,6 @@ import com.ness.recommendation.model.LoanApplications;
 public interface EmiService {
 
 	public String generateEmis(LoanApplications loanApplication);
-	public List<Emi> getEmisByEmail(String email);
+	public List<Emi> getEmisByEmailAndApplicationId(String email, int applicationId);
 	
 }
