@@ -4,6 +4,7 @@ import { AdminDashboardService } from '../admin-dashboard.service';
 import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
 import {AdminLoginService} from '../admin-login.service';
+import {Emi} from '../emi.model';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -75,6 +76,7 @@ ngOnInit(){
     return new Blob([uintArray], { type: 'application/pdf' });
   }
 
+ statusApprove=false;
 
   approve(loanApplication:LoanApplications){
     //documentation.status=this.stat;
@@ -83,6 +85,8 @@ ngOnInit(){
         console.log(data);
        // console.log(this.selectTeam);
         alert(data);
+        this.statusApprove=true;
+        this.generateEmitable(loanApplication);
         this.getAllApplications();
       },
       error=>{
@@ -97,6 +101,7 @@ ngOnInit(){
       data=>{
         console.log(data);
        // console.log(this.selectTeam);
+       this.statusApprove=false;
         alert(data);
         this.getAllApplications();
       },
@@ -126,4 +131,32 @@ ngOnInit(){
   logout() {
     this.adminLoginService.logout();
   }
+
+
+  generateEmitable(loanApplication:LoanApplications){
+    this._adminService.generateEmi(loanApplication).subscribe(
+      data=>{
+        console.log(data);
+       
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  emiTable:Emi[]=[];
+  getEmiTable(email:string, applicationId:number){
+
+    this._adminService.getEmi(email, applicationId).subscribe(
+      data=>{
+        console.log(data);
+       this.emiTable = data;
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+  
 }

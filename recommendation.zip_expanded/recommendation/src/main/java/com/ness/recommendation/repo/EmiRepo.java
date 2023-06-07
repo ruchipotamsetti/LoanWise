@@ -9,5 +9,5 @@ import com.ness.recommendation.model.Emi;
 @Repository
 public interface EmiRepo extends JpaRepository<Emi, String>{
 
-	public List<Emi> findByEmail(String email);
+	public List<Emi> findByEmailAndApplicationId(String email, int applicationId);
 }

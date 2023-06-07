@@ -1,7 +1,4 @@
 
-
-
-
  <button (click)="logout()">Log Out</button>
 
   <div class="table-responsive">
@@ -37,6 +34,12 @@
             <button (click)="reject(app)" class="btn btn-danger" [ngStyle]="{'disabled': (app.status=='Rejected') ? 'true' : 'false'}">
               Reject
             </button>
+          </td>
+          <!-- <td *ngIf="statusApprove">
+            <button (click)="generateEmitable(app)" class="btn btn-primary">Generate Emis</button>
+          </td> -->
+          <td >
+            <button (click)="getEmiTable(app.email, app.applicationId)" class="btn btn-primary">Get Emi Table</button>
           </td>
 
         </tr>
@@ -86,4 +89,43 @@
     </tr>
   </tbody>
 </table>
+
+
+<!-- {{emi.email}} -->
+<table border="2" style="border-collapse: collapse; width: 100%;" class="table">
+  <thead>
+  <td>emiId</td>
+	<td>applicationId</td>
+	<td>loanId</td>
+	<td>email</td>
+	<td>dateOfPayment</td>
+	<td>emiNo</td>
+	<td>beginningLoanBalance</td>
+	<td>emi</td>
+	<td>principal</td>
+	<td>monthlyInterest</td>
+	<td>outstandingBalance</td>
+	<td>status</td>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let emi of emiTable">
+      <td>{{emi.emiId}}</td>
+      <td>{{ emi.applicationId }}</td>
+      <td>{{ emi.loanId }}</td>
+      <td>{{ emi.email }}</td>
+      <td>{{ emi.loanId }}</td>
+      <td>{{ emi.dateOfPayment }}</td>
+      <td>{{ emi.emiNo }}</td>
+      <td>{{ emi.beginningLoanBalance }}</td>
+      <td>{{ emi.emi }}</td>
+      <td>{{ emi.principal }}</td>
+      <td>{{ emi.monthlyInterest }}</td>
+      <td>{{ emi.outstandingBalance }}</td>
+      <td>{{ emi.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
   

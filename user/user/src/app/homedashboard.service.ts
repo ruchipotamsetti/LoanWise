@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { LoanApplications } from './loanapplications.model';
-import { Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -13,4 +12,5 @@ export class HomedashboardService {
   getApplications(email:String){
     return this._http.get(`http://localhost:9999/recommend/getapplications/?email=${email}`);
   }
+
 }
