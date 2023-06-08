@@ -66,7 +66,8 @@ import { AddLoansComponent } from './add-loans/add-loans.component';
     ReactiveFormsModule,
     AngularFireAuthModule,
     NgOtpInputModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

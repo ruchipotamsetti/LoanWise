@@ -153,14 +153,28 @@ public class RecommendationController {
 		return emiService.generateEmis(loanApplication);
 	}
 	
+	@GetMapping("getemibyemail/{email}")
+	public ResponseEntity<List<Emi>> getEmisByEmail(@PathVariable String email){
+		return new ResponseEntity<List<Emi>>(emiService.getEmisByEmail(email), HttpStatus.OK);
+	}
+	
+	
 	@GetMapping("getemi/{email}/{applicationId}")
 	public ResponseEntity<List<Emi>> getEmisByEmail(@PathVariable String email, @PathVariable int applicationId){
 		return new ResponseEntity<List<Emi>>(emiService.getEmisByEmailAndApplicationId(email, applicationId), HttpStatus.OK);
 	}
 	
-	
-	
+	@PutMapping("updateemi")
+	public ResponseEntity<String> updateEmiStatus(@RequestBody Emi emi){
+		
+		String update = emiService.updateEmiStatus(emi.getEmiId(), emi.getStatus(), emi.getEmail());
+		return new ResponseEntity<String>(update, HttpStatus.OK);
+	}
 
+	
+	
+	
+	
 //	@GetMapping("personalbyrequest/{interestrate}")
 //	public ResponseEntity<List<PersonalLoan>> getPersonalLoansInt(@PathVariable double interestrate){
 //		

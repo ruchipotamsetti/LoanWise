@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
 import {AdminLoginService} from '../admin-login.service';
 import {Emi} from '../emi.model';
+import { SharedHeaderFooterService } from '../shared-header-footer.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,12 +13,19 @@ import {Emi} from '../emi.model';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
+  showHeaderAndFooter=false;
+
   constructor(private _router:Router, private _adminService: AdminDashboardService,
-    private adminLoginService:AdminLoginService){}
+    private adminLoginService:AdminLoginService, private sharedService:SharedHeaderFooterService){}
 
 ngOnInit(){
   //this.viewDocs();
+  if(localStorage.getItem('usertype')!='admin'){
+    alert("Please login to view Admin Dashboard")
+    this._router.navigate(['/adminLogin'])
+  }
   this.getAllApplications();
+  this.sharedService.parentProperty = false; 
 }
 
   documentations:Documentation[]=[];
@@ -76,7 +84,7 @@ ngOnInit(){
     return new Blob([uintArray], { type: 'application/pdf' });
   }
 
- statusApprove=false;
+ showEmiTable=false;
 
   approve(loanApplication:LoanApplications){
     //documentation.status=this.stat;
@@ -85,7 +93,7 @@ ngOnInit(){
         console.log(data);
        // console.log(this.selectTeam);
         alert(data);
-        this.statusApprove=true;
+       
         this.generateEmitable(loanApplication);
         this.getAllApplications();
       },
@@ -101,7 +109,7 @@ ngOnInit(){
       data=>{
         console.log(data);
        // console.log(this.selectTeam);
-       this.statusApprove=false;
+       
         alert(data);
         this.getAllApplications();
       },
@@ -137,7 +145,7 @@ ngOnInit(){
     this._adminService.generateEmi(loanApplication).subscribe(
       data=>{
         console.log(data);
-       
+        
       },
       error=>{
         console.log(error);
@@ -151,7 +159,37 @@ ngOnInit(){
     this._adminService.getEmi(email, applicationId).subscribe(
       data=>{
         console.log(data);
+        this.showEmiTable=true;
        this.emiTable = data;
+       this.emiTable.sort((a, b) =>  a.emiNo - b.emiNo);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  approveEmi(emi:Emi){
+    let status = "Approved"
+    emi.status = status;
+    this._adminService.updateEmiStatus(emi).subscribe(
+      data=>{
+        console.log(data)
+        //this.getEmiTable(email, applicationId);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  rejectEmi(emi:Emi){
+    let status = "Rejected"
+    emi.status = status;
+    this._adminService.updateEmiStatus(emi).subscribe(
+      data=>{
+        console.log(data)
+        //this.getEmiTable(email, applicationId);
       },
       error=>{
         console.log(error);

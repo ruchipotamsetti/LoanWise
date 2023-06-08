@@ -1,6 +1,6 @@
 <!-- <app-home></app-home> -->
  <div class="wrap">
-    <header id="header">
+    <header id="header" *ngIf="sharedService.parentProperty">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -20,7 +20,12 @@
                             </li>
 
                             <li><a routerLink="/contact" >Contact Us</a></li>
-                            <li><a routerLink="login">Login</a></li>
+                            <!-- <li><a routerLink="login">Login</a></li> -->
+                            <li>
+                                <a routerLink="login" *ngIf="!isLoggedIn()">Login</a>
+                                <a (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
+                            </li>
+                            
                         </ul>
                     </nav>
                 </div>
@@ -30,14 +35,12 @@
 </div>
 
 
+<!-- {{sharedService.parentProperty}} -->
 
 
+<router-outlet></router-outlet>
 
-
-
-<router-outlet></router-outlet>     
-
-<footer class ="hello">
+<footer class ="hello" *ngIf="sharedService.parentProperty">
     <div class="container">
         <div class="row">
             <div class="col-md-5">

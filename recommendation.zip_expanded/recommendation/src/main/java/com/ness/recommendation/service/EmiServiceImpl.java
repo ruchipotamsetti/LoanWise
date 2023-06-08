@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.ness.recommendation.model.Emi;
 import com.ness.recommendation.model.LoanApplications;
+import com.ness.recommendation.model.User;
 import com.ness.recommendation.repo.EmiRepo;
+import com.ness.recommendation.repo.UserRepository;
 
 @Service
 public class EmiServiceImpl implements EmiService{
 	
 	@Autowired
 	EmiRepo emirepo;
+	@Autowired
+	UserRepository userRepository;
+	
 	List<Emi> emiList = new ArrayList<Emi>();
     
 	@Override
@@ -89,12 +94,45 @@ public class EmiServiceImpl implements EmiService{
     }
 
 	@Override
-	public List<Emi> getEmisByEmailAndApplicationId(String email, int applicationId) {
+	public List<Emi> getEmisByEmail(String email) {
 		// TODO Auto-generated method stub
-		List<Emi> found = emirepo.findByEmailAndApplicationId(email, applicationId);
+		List<Emi> found = emirepo.findByEmail(email);
 		if(found!= null) {
 			return found;
 		}
 		return null;
+	}
+	
+	@Override
+	public List<Emi> getEmisByEmailAndApplicationId(String email, int applicationId) {
+		 // TODO Auto-generated method stub
+		 List<Emi> found = emirepo.findByEmailAndApplicationId(email, applicationId);
+		 if(found!= null) {
+		 return found;
+		 }
+		 return null;
+	}
+
+	@Override
+	public String updateEmiStatus(String emiId, String status, String email) {
+		// TODO Auto-generated method stub
+		emirepo.updateEmiStatus(emiId, status);
+		
+		if(status.equalsIgnoreCase("Approved")) {
+			User found = userRepository.findByEmail(email);
+			if(found.getCreditScore()<900) {
+				int creditScore = found.getCreditScore()+1;
+				userRepository.updateCreditScore(creditScore, email);
+			}
+		}
+		else if(status.equalsIgnoreCase("Rejected")) {
+			User found = userRepository.findByEmail(email);
+			if(found.getCreditScore()>300) {
+				int creditScore = found.getCreditScore()-1;
+				userRepository.updateCreditScore(creditScore, email);
+			}
+		}
+		
+		return emiId+" status set as "+status;
 	}
 }

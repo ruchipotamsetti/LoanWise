@@ -37,4 +37,10 @@ export class AdminDashboardService {
   getEmi(email:string, applicationId:number){
     return this._http.get<Emi[]>(`http://localhost:9999/recommend/getemi/${email}/${applicationId}`);
   }
+
+  updateEmiStatus(emi:Emi){
+    return this._http.put<String>(`http://localhost:9999/recommend/updateemi`, emi, {responseType: 'text' as 'json'});
+    
+  }
+
 }

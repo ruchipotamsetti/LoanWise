@@ -17,12 +17,7 @@ constructor(private _recomSrv:RecommendationService, private _userSrv : UserServ
 selectedLoan:any;
 pageReload=false;
 ngOnInit(){
-  this._router.events.subscribe((event) => {
-    if (event instanceof NavigationEnd) {
-      // Perform a page reload once
-      window.location.reload();
-    }
-  });
+  this.reload();
 
   let loan = localStorage.getItem('selectedLoan')
   if(loan!=null){
