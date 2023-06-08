@@ -29,6 +29,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
 import { AddLoansComponent } from './add-loans/add-loans.component';
+import { CommonModule } from '@angular/common';
 
 
 
