@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ness.recommendation.exception.PersonalLoanDoesNotExist;
 import com.ness.recommendation.model.PersonalLoan;
 import com.ness.recommendation.model.RecommendationForm;
 import com.ness.recommendation.repo.PersonalLoanRepo;
@@ -53,15 +54,19 @@ public class PersonalServiceImpl implements PersonalLoanService{
 		// TODO Auto-generated method stub
 		//int creditScore=600;
 		String occupationType = recommendationForm.getOccupationType();
+		List<PersonalLoan> recommended;
 		if(occupationType.equals("Salaried")){
-			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
-			return recommended;
+			recommended = personalLoanRepo.getByRequestForSalaried(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
+			//return recommended;
 		}
 		else {
-			List<PersonalLoan> recommended = personalLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
-			return recommended;
+			recommended = personalLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
+//			return recommended;
 		}
-		
+//		if(recommended.isEmpty()) {
+//			throw new PersonalLoanDoesNotExist("Personal does not exist");
+//		}
+		return recommended;
 	}
 
 	

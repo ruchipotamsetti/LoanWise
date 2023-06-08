@@ -72,13 +72,14 @@ export class RecomFormComponent {
             
             localStorage.setItem('personal', JSON.stringify(data));
             //const hello=new PersonalLoan();
-            const hello=localStorage.getItem("personal");
+            console.log(data)
             //console.log("From database/Localstorage"+hello)
-            if(hello!=null){
+            if(data.length!=0){
+              alert("Here are the recommendations for personal loan")
               this._router.navigate(['/rlist'])
-              alert("here are the recommendations")
             }else{
-              alert("no recommendation found")
+              alert("No recommendation found. Please fill the form again")
+              this._router.navigate(['/recomform'])
             }
            
           },
@@ -92,10 +93,18 @@ export class RecomFormComponent {
         this._recomSrv.getHomeLoan(this.rForm).subscribe(
           data=>{
            
-            alert('Recommendations Home Loan')
+            //alert('Recommendations Home Loan')
             localStorage.setItem('home', JSON.stringify(data));
             console.log(data)
-            this._router.navigate(['/rlist'])
+
+            if(data.length!=0){
+              alert("Here are the recommendations for home loan")
+              this._router.navigate(['/rlist'])
+            }else{
+              alert("No recommendation found. Please fill the form again")
+              this._router.navigate(['/recomform'])
+            }
+
           },
           error=>{
             console.log(error)
@@ -106,10 +115,17 @@ export class RecomFormComponent {
         console.log("Auto Type:"+this.autoTypeOption);
         this._recomSrv.getAutoLoan(this.rForm,this.autoTypeOption).subscribe(
           data=>{
-            alert('Recommendations auto Loan')
+            //alert('Recommendations auto Loan')
             localStorage.setItem('auto', JSON.stringify(data));
             console.log(data)
-            this._router.navigate(['/rlist'])
+
+            if(data.length!=0){
+              alert("Here are the recommendations for auto loan")
+              this._router.navigate(['/rlist'])
+            }else{
+              alert("No recommendation found. Please fill the form again")
+              this._router.navigate(['/recomform'])
+            }
           },
           error=>{
             console.log(error)

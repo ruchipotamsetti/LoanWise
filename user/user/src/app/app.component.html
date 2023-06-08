@@ -23,7 +23,7 @@
                             <!-- <li><a routerLink="login">Login</a></li> -->
                             <li>
                                 <a routerLink="login" *ngIf="!isLoggedIn()">Login</a>
-                                <a (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
+                                <a style="cursor: pointer;" (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
                             </li>
                             
                         </ul>
