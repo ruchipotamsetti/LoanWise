@@ -156,7 +156,7 @@ public class RecommendationController {
 	@PutMapping("updateemi")
 	public ResponseEntity<String> updateEmiStatus(@RequestBody Emi emi){
 		
-		String update = emiService.updateEmiStatus(emi.getEmiId(), emi.getStatus());
+		String update = emiService.updateEmiStatus(emi.getEmiId(), emi.getStatus(), emi.getEmail());
 		return new ResponseEntity<String>(update, HttpStatus.OK);
 	}
 
