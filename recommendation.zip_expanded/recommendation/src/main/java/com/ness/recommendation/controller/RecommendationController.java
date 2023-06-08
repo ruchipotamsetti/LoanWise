@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.ness.recommendation.model.AutoLoan;
 import com.ness.recommendation.model.Documentation;
 import com.ness.recommendation.model.Emi;
@@ -24,6 +25,10 @@ import com.ness.recommendation.model.HomeLoan;
 import com.ness.recommendation.model.LoanApplications;
 import com.ness.recommendation.model.PersonalLoan;
 import com.ness.recommendation.model.RecommendationForm;
+import com.ness.recommendation.model.SaveLoanData;
+import com.ness.recommendation.repo.AutoLoanRepo;
+import com.ness.recommendation.repo.HomeLoanRepo;
+import com.ness.recommendation.repo.PersonalLoanRepo;
 import com.ness.recommendation.service.AutoLoanService;
 import com.ness.recommendation.service.DocumentationService;
 import com.ness.recommendation.service.EmiService;
@@ -48,6 +53,12 @@ public class RecommendationController {
 	LoanApplicationsService loanApplicationsService;
 	@Autowired
 	EmiService emiService;
+	@Autowired
+	PersonalLoanRepo personalLoanRepo;
+	@Autowired
+	HomeLoanRepo homeLoanRepo;
+	@Autowired
+	AutoLoanRepo autoLoanRepo;
 	
 	//------------Personal Loan------------------------
 	
@@ -174,5 +185,77 @@ public class RecommendationController {
 //	public ResponseEntity<List<HomeLoan>> getAllHomeLoans(){
 //	return new ResponseEntity<List<HomeLoan>>(personalLoanService.getAll(), HttpStatus.OK	);
 //}
+	
+	
+	
+	
+	 @PostMapping("saveLoan/{loanType}")
+	    public String savedata(@RequestBody SaveLoanData saveLoanData, @PathVariable String loanType){
+	    	if(loanType.equals("Personal Loan")) {
+	    		PersonalLoan personalLoan = new PersonalLoan();
+	    		personalLoan.setBankName(saveLoanData.getBankName());
+	    		personalLoan.setContact(saveLoanData.getContact());
+	    		personalLoan.setDescription(saveLoanData.getDescription());
+	    		personalLoan.setEmiPerMonth(saveLoanData.getEmiPerMonth());
+	    		personalLoan.setImage(saveLoanData.getImage());
+	    		personalLoan.setInterestRate(saveLoanData.getInterestRate());
+	    		personalLoan.setLoanId(saveLoanData.getLoanId());
+	    		personalLoan.setMaxLoanAmt(saveLoanData.getMaxLoanAmt());
+	    		personalLoan.setMaxTenure(saveLoanData.getMaxLoanAmt());
+	    		personalLoan.setMinCreditScore(saveLoanData.getMinCreditScore());
+	    		personalLoan.setMinSalaryForSalaried(saveLoanData.getMinSalaryForSalaried());
+	    		personalLoan.setMinSalaryForSelfEmployed(saveLoanData.getMinSalaryForSelfEmployed());
+	    		personalLoan.setPrePaymentCharges(saveLoanData.getPrePaymentCharges());
+	    		personalLoan.setProcessingFee(saveLoanData.getProcessingFee());
+	    		personalLoan.setUrl(saveLoanData.getUrl());	
+	    		personalLoanRepo.save(personalLoan);
+	    		return "Personal Loan saved";
+	    	}
+	    	else if(loanType.equals("Home Loan")) {
+	    		HomeLoan homeLoan=new HomeLoan();
+	    		homeLoan.setBankName(saveLoanData.getBankName());
+	    		homeLoan.setContact(saveLoanData.getContact());
+	    		homeLoan.setDescription(saveLoanData.getDescription());
+	    		homeLoan.setEmiPerMonth(saveLoanData.getEmiPerMonth());
+	    		homeLoan.setImage(saveLoanData.getImage());
+	    		homeLoan.setInterestRate(saveLoanData.getInterestRate());
+	    		homeLoan.setLoanId(saveLoanData.getLoanId());
+	    		homeLoan.setMaxLoanAmt(saveLoanData.getMaxLoanAmt());
+	    		homeLoan.setMaxTenure(saveLoanData.getMaxTenure());
+	    		homeLoan.setMinCreditScore(saveLoanData.getMinCreditScore());
+	    		homeLoan.setMinSalaryForSalaried(saveLoanData.getMinSalaryForSalaried());
+	    		homeLoan.setMinSalaryForSelfEmployed(saveLoanData.getMinSalaryForSelfEmployed());
+	    		homeLoan.setPrePaymentCharges(saveLoanData.getPrePaymentCharges());
+	    		homeLoan.setProcessingFee(saveLoanData.getProcessingFee());
+	    		homeLoan.setUrl(saveLoanData.getUrl());
+	    		homeLoanRepo.save(homeLoan);
+	    		return "Home Loan saved";
+	    		
+	    	}
+	    	else if(loanType.equals("Auto Loan"))
+	    	{
+	    		AutoLoan autoLoan=new AutoLoan();
+	    		autoLoan.setAutoType(saveLoanData.getAutoType());
+	    		autoLoan.setBankName(saveLoanData.getBankName());
+	    		autoLoan.setContact(saveLoanData.getContact());
+	    		autoLoan.setDescription(saveLoanData.getDescription());
+	    		autoLoan.setEmiPerMonth(saveLoanData.getEmiPerMonth());
+	    		autoLoan.setImage(saveLoanData.getImage());
+	    		autoLoan.setInterestRate(saveLoanData.getInterestRate());
+	    		autoLoan.setLoanId(saveLoanData.getLoanId());
+	    		autoLoan.setMaxLoanAmt(saveLoanData.getMaxLoanAmt());
+	    		autoLoan.setMaxTenure(saveLoanData.getMaxTenure());
+	    		autoLoan.setMinCreditScore(saveLoanData.getMinCreditScore());
+	    		autoLoan.setMinSalaryForSalaried(saveLoanData.getMinSalaryForSalaried());
+	    		autoLoan.setMinSalaryForSelfEmployed(saveLoanData.getMinSalaryForSelfEmployed());
+	    		autoLoan.setPrePaymentCharges(saveLoanData.getPrePaymentCharges());
+	    		autoLoan.setProcessingFee(saveLoanData.getProcessingFee());
+	    		autoLoan.setUrl(saveLoanData.getUrl());
+	    		autoLoanRepo.save(autoLoan);
+	    		return "auto loan saved";
+	    	}
+	    		
+	    	return "No loan saved";
+	          }
 
 }

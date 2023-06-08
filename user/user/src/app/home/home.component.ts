@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RecommendForm } from '../RecommendForm.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,5 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  loanType='';
+  constructor(private _router:Router){
 
+  }
+ngOnInit(): void {
+  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //Add 'implements OnInit' to the class.
+  
 }
+
+  selectType(type:string){
+    
+    this.loanType = type;
+    localStorage.setItem('loanType',this.loanType)
+    if(localStorage.getItem('email')){
+      this._router.navigate(['/recomform'])
+          }
+      else{
+        this._router.navigate(['/login'])
+      }
+    }
+  //this.displayForm();
+  }
+
+
