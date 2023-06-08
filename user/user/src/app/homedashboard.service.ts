@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoanApplications } from './loanapplications.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Emi } from './emi.model';
 
 @Injectable({
@@ -10,8 +10,16 @@ export class HomedashboardService {
 
   constructor(private _http:HttpClient) { }
 
+  // getRequestFromJWT(token:string){
+  //   let myToken = 'Bearer '+ token;
+  //   let headers = new HttpHeaders().set('Authorization', myToken);
+  //   return this._http.get<string>('http://localhost:5555/user/test', {headers, responseType:'text' as 'json'});
+  // }
+
   getApplications(email:String){
-    return this._http.get(`http://localhost:9999/recommend/getapplications/?email=${email}`);
+    let myToken = 'Bearer '+ localStorage.getItem('token');
+    let headers = new HttpHeaders().set('Authorization', myToken);
+    return this._http.get(`http://localhost:5555/recommend/getapplications/?email=${email}`, {headers});
   }
 
   getEmi(email:string, applicationId:number){
