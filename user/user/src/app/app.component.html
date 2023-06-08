@@ -20,7 +20,12 @@
                             </li>
 
                             <li><a routerLink="/contact" >Contact Us</a></li>
-                            <li><a routerLink="login">Login</a></li>
+                            <!-- <li><a routerLink="login">Login</a></li> -->
+                            <li>
+                                <a routerLink="login" *ngIf="!isLoggedIn()">Login</a>
+                                <a (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
+                            </li>
+                            
                         </ul>
                     </nav>
                 </div>
