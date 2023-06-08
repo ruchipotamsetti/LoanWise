@@ -25,6 +25,7 @@ var config={
 export class CodeComponent  implements OnInit {
   otp!: string;
   verify: any;
+  displayotp = true;
   constructor(private router: Router, private ngZone: NgZone) {}
 
   config = {
@@ -69,14 +70,16 @@ firebase.initializeApp(config);
         console.log(response);
         localStorage.setItem('user_data', JSON.stringify(response));
         this.ngZone.run(() => {
-          alert("suuu")
+          alert("Phone number verified")
           // this.router.navigate(['/dashboard']);
-          window.location.href='/dashboard';
+          window.location.href='/register';
 
         });
       })
       .catch((error) => {
         this.wrongotp=true;
+        this.otp=''
+        this.displayotp=false
         alert("Invalid OTP")
         // console.log(error);
         // alert(error.message);
@@ -115,6 +118,11 @@ firebase.initializeApp(config);
           window.location.reload();
         }, 5000);
       });
+  }
+
+  resend(){
+    this.displayotp=true;
+    this.getOTP();
   }
 
 }

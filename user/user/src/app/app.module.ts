@@ -30,6 +30,7 @@ import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
 import { AddLoansComponent } from './add-loans/add-loans.component';
 import { CommonModule } from '@angular/common';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -55,6 +56,7 @@ import { CommonModule } from '@angular/common';
     AboutusComponent,
     ContactComponent,
     AddLoansComponent,
+    ErrorComponent,
     
     
   ],

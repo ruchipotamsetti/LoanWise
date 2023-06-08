@@ -1,6 +1,6 @@
-<div class="otp">
+<div class="otp" style="text-align: center;" *ngIf="displayotp">
     <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
-    <button class="btn btn-success mt-4" (click)="handleClick()">Verify OTP</button>
+    <button class="btn btn-success mt-4" (click)="handleClick()" >Verify OTP</button>
   </div>
   
   
@@ -13,7 +13,7 @@
       <div class="row d-flex align-items-center justify-content-center">
         <form class="col-md-6">
           <div class="card px-5 py-5">
-            <button class="btn btn-success mt-4 signup" (click)="getOTP()">resend</button>
+            <button class="btn btn-success mt-4 signup" (click)="resend()">resend</button>
             <div id="sign-in-button"></div>
           </div>
         </form>
