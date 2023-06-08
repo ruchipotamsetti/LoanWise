@@ -18,6 +18,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
+import { AddLoansComponent } from './add-loans/add-loans.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path:"adminLogin", component: AdminLoginComponent},
   {path:"aboutus", component: AboutusComponent},
   {path:"adminDashboard", component: AdminLoginComponent},
-  {path:"contact", component:ContactComponent}
+  {path:"contact", component:ContactComponent},
+  {path:"addLoans", component:AddLoansComponent}
 ];
 
 @NgModule({

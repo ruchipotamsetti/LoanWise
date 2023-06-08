@@ -28,6 +28,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
+import { AddLoansComponent } from './add-loans/add-loans.component';
 
 
 
@@ -52,6 +53,7 @@ import { RouterModule } from '@angular/router';
     AdminLoginComponent,
     AboutusComponent,
     ContactComponent,
+    AddLoansComponent,
     
     
   ],

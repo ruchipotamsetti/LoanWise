@@ -6,6 +6,7 @@ import { RecommendationService } from '../recommendation.service';
 import { RecommendForm } from '../RecommendForm.model';
 import { UserService } from '../user.service';
 import { AuthRequest } from '../authRequest.model';
+import { LoanForm } from '../addLoan.model';
 
 @Component({
   selector: 'app-recom-form',
@@ -25,11 +26,12 @@ export class RecomFormComponent {
     autoTypeOption: new FormControl()
   });
  
-
   ngOnInit(){
     // localStorage.setItem('personal','');
     // localStorage.setItem('home','');
     // localStorage.setItem('auto','');
+    this.rForm.loanType = localStorage.getItem('loanType') + '';
+    this.displayForm();
 
   }
 
@@ -42,6 +44,8 @@ export class RecomFormComponent {
   displayops=true;
   displayAutodd=false;
  autoTypeOption:String='';
+
+ 
   displayForm(){
     this.display=true;
     this.displayops=false;
@@ -66,7 +70,6 @@ export class RecomFormComponent {
         this._recomSrv.getPersonalLoan(this.rForm).subscribe(
           data=>{
             
-            //console.log("This is data"+data);
             localStorage.setItem('personal', JSON.stringify(data));
             //const hello=new PersonalLoan();
             const hello=localStorage.getItem("personal");
