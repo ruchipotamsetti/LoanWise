@@ -19,6 +19,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddLoansComponent } from './add-loans/add-loans.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,10 @@ const routes: Routes = [
   {path:"aboutus", component: AboutusComponent},
   {path:"adminDashboard", component: AdminLoginComponent},
   {path:"contact", component:ContactComponent},
-  {path:"addLoans", component:AddLoansComponent}
+  {path:"addLoans", component:AddLoansComponent},
+  {path:"phone", component:PhonenumberComponent},
+  {path:"code", component:CodeComponent},
+  {path:"**", component:ErrorComponent}
 ];
 
 @NgModule({
