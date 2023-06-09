@@ -66,7 +66,7 @@ public class UserController {
     
     @PostMapping("na/signup")
     public User signup(@RequestBody User user){
-    	user.setCreditScore(600);
+    	user.setCreditScore(700);
     	return userRepository.save(user);
           }
     
