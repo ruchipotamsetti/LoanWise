@@ -27,6 +27,7 @@ ngOnInit(): void {
       this._router.navigate(['/recomform'])
           }
       else{
+        alert('Login to see recommendations')
         this._router.navigate(['/login'])
       }
     }

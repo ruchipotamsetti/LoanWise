@@ -14,6 +14,12 @@ import { LoanForm } from '../addLoan.model';
   styleUrls: ['./recom-form.component.css']
 })
 export class RecomFormComponent {
+
+  constructor(private _recomSrv:RecommendationService, private _userSrv:UserService ,private _router:Router){
+
+  }
+
+
   recomForm =new FormGroup({
     interestRate:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
     loanAmt:new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
@@ -25,19 +31,39 @@ export class RecomFormComponent {
     //creditScore:new FormControl(),
     autoTypeOption: new FormControl()
   });
+
+
  
+  loanTypePresent=false;
   ngOnInit(){
     // localStorage.setItem('personal','');
     // localStorage.setItem('home','');
     // localStorage.setItem('auto','');
+
+    
+
     this.rForm.loanType = localStorage.getItem('loanType') + '';
-    this.displayForm();
+    console.log("LoanType: "+this.rForm.loanType)
+    if(this.rForm.loanType == 'null'){
+      console.log("IS NULL")
+      this.loanTypePresent=false;
+      console.log(this.loanTypePresent)
+      alert('Login to see recommendations')
+      this._router.navigate(['/login'])
+    }
+    else{
+      console.log("NOT NULL")
+      this.loanTypePresent=true;
+      this.displayForm();
+      console.log(this.loanTypePresent)
+    }
+    //this.displayForm();
+
+    
 
   }
 
-  constructor(private _recomSrv:RecommendationService, private _userSrv:UserService ,private _router:Router){
-
-  }
+  
 
   rForm= new RecommendForm();
   display=false;
@@ -158,6 +184,18 @@ export class RecomFormComponent {
       }
     )
   }
+
+
+  selectType(type:string){
+    localStorage.setItem('loanType',type)
+    // if(localStorage.getItem('email')){
+    //   this._router.navigate(['/recomform'])
+    //       }
+    //   else{
+    //     this._router.navigate(['/login'])
+    //   }
+   }
+
 }
 
 

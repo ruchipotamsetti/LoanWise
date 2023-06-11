@@ -14,6 +14,7 @@ export class HomeDashboardComponent {
   constructor(private _homeSrv:HomedashboardService, private _router:Router){}
 
   displayEmiTable=false;
+  displayApplicationsTable = false;
   ngOnInit(): void {
     if(localStorage.getItem('email')){
       this.getAllApplications()
@@ -39,6 +40,12 @@ export class HomeDashboardComponent {
 
         console.log(data)
         console.log("this is ="+this.applications);
+        if(this.applications.length == 0){
+          this.displayApplicationsTable=false;
+        }
+        else{
+          this.displayApplicationsTable=true;
+        }
       },
       error=>{
         console.log(error)
