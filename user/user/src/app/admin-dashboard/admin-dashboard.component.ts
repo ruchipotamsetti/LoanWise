@@ -196,5 +196,9 @@ ngOnInit(){
       }
     )
   }
+
+  addLoan(){
+    this._router.navigate(['/addLoans'])
+  }
   
 }

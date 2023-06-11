@@ -51,6 +51,7 @@ export class AddLoansComponent {
 
           }
           alert("data saved");
+          this._router.navigate(['/addLoans'])
           console.log("the loan details are"+data)
         },
         error=>{

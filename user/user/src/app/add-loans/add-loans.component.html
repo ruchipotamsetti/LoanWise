@@ -1,10 +1,10 @@
-<section class="featured-places" *ngIf="displayops">
+<section class="featured-places" *ngIf="displayops" >
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-heading">
                     <span>POST A LOAN</span>
-                    <h2>Select the loan you wanna post</h2>
+                    <h2>Select the loan you want to post</h2>
                 </div>
             </div> 
         </div> 
@@ -116,7 +116,7 @@
 </div> -->
 
 <div *ngIf="display">
-<div class="form-group" *ngIf="displayAutodd">
+<div class="form-group" *ngIf="displayAutodd"  style="width: fit-content; margin-left: 44vw;">
     <label for="autoType">Select Automobile</label>
     <select class="form-control" id="autoType" formControlName="autoTypeOption" [(ngModel)]="autoTypeOption" required>
       <option value="select">Select</option>
