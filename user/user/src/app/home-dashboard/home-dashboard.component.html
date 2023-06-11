@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive" *ngIf="displayApplicationsTable">
     <table class="table table-dark" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
         <thead>
         <tr>
@@ -39,6 +39,10 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 19rem;">
+  <h4 *ngIf="!displayApplicationsTable">No Loan Applications found!</h4>
   </div>
 
   <table style="border-collapse: collapse; width: 100%;" class="table table-striped" *ngIf="displayEmiTable">

@@ -1,5 +1,5 @@
 export class RecommendForm{
-    interestRate=0.0;
+    interestRate!:number;
     loanAmt!:number;
     tenure!:number;
     salary!:number;
