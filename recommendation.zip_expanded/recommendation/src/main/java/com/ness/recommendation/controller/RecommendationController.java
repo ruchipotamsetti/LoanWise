@@ -201,7 +201,7 @@ public class RecommendationController {
 	    		personalLoan.setInterestRate(saveLoanData.getInterestRate());
 	    		personalLoan.setLoanId(saveLoanData.getLoanId());
 	    		personalLoan.setMaxLoanAmt(saveLoanData.getMaxLoanAmt());
-	    		personalLoan.setMaxTenure(saveLoanData.getMaxLoanAmt());
+	    		personalLoan.setMaxTenure(saveLoanData.getMaxTenure());
 	    		personalLoan.setMinCreditScore(saveLoanData.getMinCreditScore());
 	    		personalLoan.setMinSalaryForSalaried(saveLoanData.getMinSalaryForSalaried());
 	    		personalLoan.setMinSalaryForSelfEmployed(saveLoanData.getMinSalaryForSelfEmployed());

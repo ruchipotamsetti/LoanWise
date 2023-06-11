@@ -1,6 +1,7 @@
 package com.ness.recommendation.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class SaveLoanData {
     int maxTenure;
     int processingFee;
     String prePaymentCharges;
+   
     String description;
     int minSalaryForSalaried;
     int minSalaryForSelfEmployed;
