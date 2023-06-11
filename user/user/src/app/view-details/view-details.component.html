@@ -27,12 +27,12 @@
               <h2><strong class="text-primary">{{selectedLoan.bankName}}</strong></h2>
 
               <p class="lead">
-                 <b>Max Loan Amount:&nbsp;</b><i class="fa-solid fa-indian-rupee-sign"></i>{{selectedLoan.maxLoanAmt}}&nbsp;&nbsp;
+                 <b>Max Loan Amount:&nbsp;</b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{selectedLoan.maxLoanAmt}}&nbsp;&nbsp;
                 <i class="fa-solid fa-timer"></i><b>Max Tenure:</b>&nbsp;{{selectedLoan.maxTenure}}  Years&nbsp;&nbsp;
-                <i class=""></i>&nbsp;<b>Interest Rate:</b>&nbsp;{{selectedLoan.interestRate}}
+                <i class=""></i>&nbsp;<b>Interest Rate:</b>&nbsp;{{selectedLoan.interestRate}}%
                 <!-- <i class=""></i>&nbsp;<b>EMI Per Month:</b>&nbsp;{{selectedLoan.emiPerMonth}} -->
               </p>
-              <p class="lead"><i class=""></i>&nbsp;<b>EMI Per Month:</b>&nbsp;{{selectedLoan.emiPerMonth}}</p>
+              <p class="lead">&nbsp;<b>EMI Per Month:</b>&nbsp;<i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{selectedLoan.emiPerMonth}}</p>
 
                 <div class="blue-button">
                   <a  (click)="applyLoan(selectedLoan)">Apply for this loan</a>
@@ -55,7 +55,7 @@
                   <li>
                       <a class="accordion-trigger">Pre-Payment Charges</a>
                       <div class="accordion-content">
-                        <p class="lead"> <i class="fa fa-map-marker"></i> London </p>
+                       
 
                         <p> {{selectedLoan.prePaymentCharges}}</p>
                       </div>
@@ -69,7 +69,7 @@
 
                             <br>
 
-                            <strong>{{selectedLoan.processingFee}}</strong>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp; <strong>{{selectedLoan.processingFee}}</strong>
 
                         </p>
 
@@ -89,7 +89,7 @@
                             <br>
                             
                             <strong>
-                              <a href="tel:456789123">{{selectedLoan.minSalaryForSalaried}}</a>
+                              <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<a href="tel:456789123">{{selectedLoan.minSalaryForSalaried}}</a>
                             </strong>
                         </p>
                         <p>
@@ -98,17 +98,17 @@
                           <br>
                           
                           <strong>
-                            <a href="tel:456789123">{{selectedLoan.minSalaryForSelfEmployed}}</a>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;  <a href="tel:456789123">{{selectedLoan.minSalaryForSelfEmployed}}</a>
                           </strong>
                       </p>
 
                         <p>
-                          <span>Email</span>
+                          <span>Minimum Credit Score</span>
 
                           <br>
                           
                           <strong>
-                            <a href="mailto:john@carsales.com">john@carsales.com</a>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp; <a href="mailto:john@carsales.com">{{selectedLoan.minCreditScore}}</a>
                           </strong>
                         </p>
 
@@ -118,7 +118,7 @@
                           <br>
                           
                           <strong>
-                            <a href="http://www.cannonguards.com/">http://www.cannonguards.com</a>
+                            <a href="{{selectedLoan.minSalaryForSelfEmployed}}">{{selectedLoan.url}}</a>
                           </strong>
                         </p>
                       </div>
