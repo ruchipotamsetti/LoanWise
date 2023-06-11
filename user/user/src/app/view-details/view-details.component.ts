@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import { NavigationEnd } from '@angular/router';
 import { RecommendForm } from '../RecommendForm.model';
 
+
 @Component({
   selector: 'app-view-details',
   templateUrl: './view-details.component.html',
@@ -17,7 +18,11 @@ constructor(private _recomSrv:RecommendationService, private _userSrv : UserServ
 selectedLoan:any;
 pageReload=false;
 ngOnInit(){
+  // if(!this.pageReload){
+  //   this.reload()
+  // }
   // this.reload();
+  
 
   let loan = localStorage.getItem('selectedLoan')
   if(loan!=null){
@@ -30,6 +35,8 @@ ngOnInit(){
 reload(){
   if(!this.pageReload){
     this.pageReload=true;
+    // setTimeout(()=>{
+    // },100);
     window.location.reload();
   }
 }

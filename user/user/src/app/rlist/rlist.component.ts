@@ -45,6 +45,7 @@ export class RlistComponent {
 
       localStorage.setItem('selectedLoan',JSON.stringify(loan));
       this._router.navigate(['/viewdetails'])
+      // this.reload();
       
     }
 
@@ -93,6 +94,13 @@ export class RlistComponent {
       }
 
       console.log(this.selectedLoanArray)
+    }
+    pageReload=false;
+    reload(){
+      if(!this.pageReload){
+        this.pageReload=true;
+        window.location.reload();
+      }
     }
     
 }

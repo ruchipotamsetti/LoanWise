@@ -30,7 +30,8 @@ isLoggedIn(): boolean {
 logout(): void {
   // Remove the email from local storage to log out the user
   localStorage.clear();
-  this.reload();
+  //this.reload();
+  this._router.navigate(['/home']);
 
 }
 reload() {
