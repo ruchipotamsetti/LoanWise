@@ -15,7 +15,7 @@ export class AddLoansComponent {
   display=false;
   displayops=true;
   displayAutodd=false;
- autoTypeOption:String='';
+ autoTypeOption:string='';
  saveLoanForm= new LoanForm();
  loanType:string='';
 
@@ -44,14 +44,15 @@ export class AddLoansComponent {
   // this. saveLoandetails= new LoanForm();
   // .creditScore = credit1;
   
-    console.log(this.saveLoanForm);
+    console.log("saveloan"+this.saveLoanForm);
+    console.log("autotype:"+this.autoTypeOption)
       this._saveloan.saveLoanDetails(this.saveLoanForm,this.loanType).subscribe(
         data=>{
           if(data!=null){
 
           }
           alert("data saved");
-          this._router.navigate(['/addLoans'])
+          this._router.navigate(['/adminDashboard'])
           console.log("the loan details are"+data)
         },
         error=>{

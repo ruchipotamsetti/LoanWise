@@ -15,5 +15,11 @@ public class LoanExceptionHandler {
 		return new ResponseEntity<String>("Such personal loan does not exist!", HttpStatus.NOT_ACCEPTABLE);
 		
 	}
+	
+	@ExceptionHandler(AutoLoanDoesNotExist.class)
+	public ResponseEntity<String> autoLoanDoesNotExist(){
+		return new ResponseEntity<String>("Such auto loan does not exist!", HttpStatus.NOT_ACCEPTABLE);
+		
+	}
 
 }

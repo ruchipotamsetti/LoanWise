@@ -63,9 +63,9 @@ public class PersonalServiceImpl implements PersonalLoanService{
 			recommended = personalLoanRepo.getByRequestForSelfEmployed(recommendationForm.getInterestRate(), recommendationForm.getLoanAmt(), recommendationForm.getTenure(), recommendationForm.getSalary(), recommendationForm.getCreditScore());
 //			return recommended;
 		}
-//		if(recommended.isEmpty()) {
-//			throw new PersonalLoanDoesNotExist("Personal does not exist");
-//		}
+		if(recommended.isEmpty()) {
+			throw new PersonalLoanDoesNotExist("Personal does not exist");
+		}
 		return recommended;
 	}
 

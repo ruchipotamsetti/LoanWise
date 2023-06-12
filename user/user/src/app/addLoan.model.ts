@@ -14,5 +14,5 @@ export class LoanForm {
     minCreditScore!: number;
     contact!: string;
     emiPerMonth!: number;
-    autoType!:string;
+    autoType:string='';
   }
