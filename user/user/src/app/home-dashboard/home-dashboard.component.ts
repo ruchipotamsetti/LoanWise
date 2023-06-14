@@ -3,6 +3,8 @@ import { HomedashboardService } from '../homedashboard.service';
 import { Router } from '@angular/router';
 import { LoanApplications } from '../loanapplications.model';
 import { Emi } from '../emi.model';
+import { AuthRequest } from '../authRequest.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -11,13 +13,14 @@ import { Emi } from '../emi.model';
 })
 export class HomeDashboardComponent {
 
-  constructor(private _homeSrv:HomedashboardService, private _router:Router){}
+  constructor(private _homeSrv:HomedashboardService, private _router:Router, private _userSrv:UserService){}
 
   displayEmiTable=false;
   displayApplicationsTable = false;
   ngOnInit(): void {
     if(localStorage.getItem('email')){
       this.getAllApplications()
+      this.getCreditScore()
     }
     else{
       alert("Please login to view your applications")
@@ -85,6 +88,25 @@ export class HomeDashboardComponent {
     )
 
 
+  }
+
+  creditScore!:number;
+  authRequest2 = new AuthRequest();
+  getCreditScore(){
+
+    this.authRequest2.email = localStorage.getItem('email')+'';
+    this._userSrv.getUserById(this.authRequest2).subscribe(
+      data=>{
+        console.log(data)
+        console.log('credit score: '+data.creditScore)
+        localStorage.setItem('creditScore',data.creditScore.toString());
+        this.creditScore = data.creditScore;
+      },
+      error=>{
+
+        console.log(error)
+      }
+    )
   }
   
 }

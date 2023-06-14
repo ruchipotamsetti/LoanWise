@@ -69,7 +69,7 @@ export class RecomFormComponent {
   display=false;
   displayops=true;
   displayAutodd=false;
- autoTypeOption:String='';
+ autoTypeOption!: string;
 
  
   displayForm(){
@@ -82,12 +82,12 @@ export class RecomFormComponent {
 
   
   submitRecomForm(){
-    this.getCreditScore();
+    //this.getCreditScore();
     let credit =localStorage.getItem('creditScore')+'';
     let credit1=parseInt(credit);
     //console.log('Inside submitRecomForm: '+credit1)
     this.rForm.creditScore = credit1;
-    
+    console.log("cs in submitRecomForm: "+this.rForm.creditScore)
     if(this.recomForm.valid){
       localStorage.setItem("loanType",this.rForm.loanType);
 
@@ -110,6 +110,8 @@ export class RecomFormComponent {
            
           },
           error=>{
+            alert('No such Personal Loan')
+            this._router.navigate(['/recomform'])
             console.log(error)
           }
         )

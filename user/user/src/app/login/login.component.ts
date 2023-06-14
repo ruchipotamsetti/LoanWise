@@ -31,6 +31,7 @@ export class LoginComponent {
         data=>{
           localStorage.setItem('token', data);
           localStorage.setItem('email', this.authRequest.email);
+          this.getCreditScore();
           console.log(data)
           this._router.navigate(['/home'])
           this.token=data;
@@ -68,6 +69,23 @@ export class LoginComponent {
   logout(){
     console.log("Logging out!")
     localStorage.clear();
+  }
+
+   authRequest2 = new AuthRequest();
+  getCreditScore(){
+
+    this.authRequest2.email = localStorage.getItem('email')+'';
+    this._userSrv.getUserById(this.authRequest2).subscribe(
+      data=>{
+        console.log(data)
+        console.log('credit score: '+data.creditScore)
+        localStorage.setItem('creditScore',data.creditScore.toString());
+      },
+      error=>{
+
+        console.log(error)
+      }
+    )
   }
 
 }
