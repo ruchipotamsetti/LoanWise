@@ -118,7 +118,7 @@
 <div *ngIf="display">
 <div class="form-group" *ngIf="displayAutodd"  style="width: fit-content; margin-left: 44vw;">
     <label for="autoType">Select Automobile</label>
-    <select class="form-control" id="autoType" formControlName="autoTypeOption" [(ngModel)]="autoTypeOption" required>
+    <select class="form-control" id="autoType" formControlName="autoTypeOption" [(ngModel)]="saveLoanForm.autoType" required>
       <option value="select">Select</option>
       <option value="bike">bike</option>
       <option value="car">car</option>
